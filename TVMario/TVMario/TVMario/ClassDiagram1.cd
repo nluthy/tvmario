@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TVMario.Cell" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.Character" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.Game1" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQBEEAAAREAAwAAAAEAAAABAAEAAAgAAAAAAAAABAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.GameEntity" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.GlobalSetting" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAA=</HashCode>
+      <FileName>GlobalSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.Map" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.MapWithCells" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEABAAAAAAAAAgABAIIAAAACAAgCAAAAAAAAAAAAACA=</HashCode>
+      <FileName>MapWithCells.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.My2DSprite" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAABQiAgoBgQAAAAUAAABAAAACAAAAAgAIAABA=</HashCode>
+      <FileName>My2DSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.MyButton" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIEgAAAAAAAACAAACAAAAMAAAAiAACAAA=</HashCode>
+      <FileName>MyButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.MyForm" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAAAAgAgAAAAAAAAAAAAABAAAAAAAgAQAAAAA=</HashCode>
+      <FileName>MyForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.MyMap" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAgQAAAIAAQgAAAAgAAAAAAACAAAAAAE=</HashCode>
+      <FileName>MyMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.Program" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.VisibleGameEntity" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAgAACAAAohAAAAAAAAAAAAAAACAAAAACAAIAAAA=</HashCode>
+      <FileName>VisibleGameEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.Human">
+    <Position X="1.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.Monster">
+    <Position X="4.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Monster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.Stage">
+    <Position X="6.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAEAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TVMario.InvisibleGameEntity">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InvisibleGameEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
