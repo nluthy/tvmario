@@ -15,8 +15,8 @@ namespace TVMario
 {
     public class MapWithCells : VisibleGameEntity
     {
-        public int CELL_WIDTH = 0;
-        public int CELL_HEIGHT = 0;
+        public int CELL_WIDTH = 24;
+        public int CELL_HEIGHT = 24;
 
         float _scale = 1.0f;
 
@@ -43,7 +43,7 @@ namespace TVMario
 
         private Cell[,] _cells;
 
-        protected Cell[,] Cells
+        public Cell[,] Cells
         {
             get { return _cells; }
             set { _cells = value; }
@@ -59,22 +59,34 @@ namespace TVMario
 
             Cells = new Cell[nRows, nColumns];
             for (int i = 0; i < nRows; i++)
-                for (int j = 0; i < nColumns; j++)
+                for (int j = 0; j < nColumns; j++)
                 {
-                    Cells[i, j] = new Cell(content, strCells[cells[i,j]], new Vector2(j * CELL_WIDTH, i * CELL_HEIGHT), new Vector2(CELL_WIDTH, CELL_HEIGHT));
+                    Cells[i, j] = new Cell(content, strCells[cells[i, j]], new Vector2(j * CELL_WIDTH, i * CELL_HEIGHT), new Vector2(CELL_WIDTH, CELL_HEIGHT));
                 }
             _sprites = new List<My2DSprite>();
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color color)
+        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
         {
 
             for (int i = 0; i < nRows; i++)
                 for (int j = 0; j < nColumns; j++)
                 {
-                    Cells[i, j].Draw(gameTime, spriteBatch, color);
+                    Cells[i, j].Draw(spriteBatch, gameTime, color);
                 }
-            base.Draw(gameTime, spriteBatch, color);
+
+        }
+
+        public void moveMap(int x, int y)
+        {
+            for (int i = 0; i < nRows; i++)
+                for (int j = 0; j < nColumns; j++)
+                {
+                    Vector2 temp = Cells[i, j].TopLeft;
+                    temp.X += x;
+                    temp.Y += y;
+                    Cells[i, j].TopLeft = temp;
+                }
         }
     }
 }
