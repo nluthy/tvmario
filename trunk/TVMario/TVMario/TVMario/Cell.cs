@@ -39,20 +39,20 @@ namespace TVMario
             SpritesCount = 1;
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color color)
+        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
         {
 
             if (Size.X != 0)
             {
-                _sprites[0].Position = -TopLeft * Scale;
+                _sprites[0].Position = TopLeft * Scale;
                 Vector2 temp = _sprites[0].Size;
                 temp.X *= Scale;
                 temp.Y *= Scale;
                 _sprites[0].Size = temp;
             }
             else
-                _sprites[0].Position = -TopLeft;
-            base.Draw(gameTime, spriteBatch, color);
+                _sprites[0].Position = TopLeft;
+            base.Draw(spriteBatch, gameTime, color);
         }
 
     }
