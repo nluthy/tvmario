@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<human>
+  <pretextures>Images/Characters/Ma</pretextures>
+  <texturecount>15</texturecount>
+  <topleft>
+    <x>0</x>
+    <y>0</y>
+  </topleft>
+  <size>
+    <x>0</x>
+    <y>0</y>
+  </size>
+</human>
