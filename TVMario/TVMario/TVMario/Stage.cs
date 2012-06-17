@@ -36,8 +36,8 @@ namespace TVMario
             {
                 strCells[i] = "Images\\Maps\\Tile" + i.ToString("00");
             }
-            int nRows = 30;
-            int nColumns = 30;
+            int nRows = 28;
+            int nColumns = 28;
             int[,] cells = new int[nRows, nColumns];
             Random rand = new Random();
             for (int i = 0; i < nRows; i++)
