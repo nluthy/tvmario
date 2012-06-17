@@ -26,7 +26,7 @@ namespace TVMario
 
         public void Init(ContentManager content, string strBackground, string strHuman, string strMap, string strMonsters)
         {
-            //Background = content.Load<Texture2D>(strBackground);
+            Background = content.Load<Texture2D>(strBackground);
             human = new Human();
             human.Init(content, strHuman);
 
@@ -57,6 +57,8 @@ namespace TVMario
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            if (Background != null)
+                spriteBatch.Draw(_background, Vector2.Zero, Color.White);
             human.Draw(spriteBatch, gameTime, Color.White);
             map.Draw(spriteBatch, gameTime, Color.White);
         }
