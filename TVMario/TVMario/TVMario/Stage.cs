@@ -20,7 +20,7 @@ namespace TVMario
             get { return _background; }
             set { _background = value; }
         }
-        MyMap map;
+        MapWithCells map;
         Human human;
         List<Monster> monsters;
 
@@ -29,18 +29,36 @@ namespace TVMario
             //Background = content.Load<Texture2D>(strBackground);
             human = new Human();
             human.Init(content, strHuman);
+
+            //Test
+            String[] strCells = new String[21];
+            for (int i = 0; i < strCells.Length; i++)
+            {
+                strCells[i] = "Images\\Maps\\Tile" + i.ToString("00");
+            }
+            int nRows = 30;
+            int nColumns = 30;
+            int[,] cells = new int[nRows, nColumns];
+            Random rand = new Random();
+            for (int i = 0; i < nRows; i++)
+                for (int j = 0; j < nColumns; j++)
+                {
+                    cells[i, j] = rand.Next() % 21;
+                }
+            map = new MapWithCells(content, strCells, new Vector2(0, 0), new Vector2(nColumns * 24, nRows * 24), nRows, nColumns, cells);
             
         }
 
         public void Update(GameTime gameTime)
         {
             human.Update(gameTime);
-            //map.Update(gameTime);
+            map.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             human.Draw(gameTime, spriteBatch, Color.White);
+            map.Draw(gameTime, spriteBatch, Color.White);
         }
 
     }
