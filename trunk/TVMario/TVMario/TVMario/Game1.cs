@@ -231,7 +231,7 @@ namespace TVMario
             spriteBatch.Begin();
             if (_gameState == GameState.MainMenu)
             {
-                _form.Draw(gameTime, spriteBatch, Color.White);
+                _form.Draw(spriteBatch, gameTime, Color.White);
             }
             else if (_gameState == GameState.NewGame)
             {

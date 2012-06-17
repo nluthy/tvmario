@@ -86,7 +86,7 @@ namespace TVMario
             InitMyButton(font, text, content, strTextures, textureCount, ref topLeft, ref size);
         }
 
-     
+
 
 
 
@@ -95,10 +95,10 @@ namespace TVMario
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color color)
+        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
         {
 
-            base.Draw(gameTime, spriteBatch, color);
+            base.Draw(spriteBatch, gameTime, color);
             Vector2 _textPos = TopLeft;
             if (Size.X == 0)
             {
@@ -113,10 +113,9 @@ namespace TVMario
             spriteBatch.DrawString(Font, Text, _textPos, Color.Black, 0f, _textOrigin, 1.1f, SpriteEffects.None, 1f);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
-            base.Draw(gameTime, spriteBatch, _color);
+            base.Draw(spriteBatch, gameTime, this.Color);
             Vector2 _textPos = TopLeft;
             if (Size.X == 0)
             {

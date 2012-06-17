@@ -57,8 +57,8 @@ namespace TVMario
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            human.Draw(gameTime, spriteBatch, Color.White);
-            map.Draw(gameTime, spriteBatch, Color.White);
+            human.Draw(spriteBatch, gameTime, Color.White);
+            map.Draw(spriteBatch, gameTime, Color.White);
         }
 
     }
