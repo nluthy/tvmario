@@ -79,7 +79,7 @@ namespace TVMario
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color color)
+        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
         {
             if (Background != null)
                 spriteBatch.Draw(_background, Vector2.Zero, Color.White);
@@ -88,7 +88,7 @@ namespace TVMario
                 if (button != null)
                     button.Draw(gameTime, spriteBatch);
             }
-            base.Draw(gameTime, spriteBatch, color);
+            
         }
     }
 }

@@ -117,13 +117,11 @@
     <Compile Include="GlobalSetting.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="InvisibleGameEntity.cs" />
-    <Compile Include="Map.cs" />
     <Compile Include="MapWithCells.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="My2DSprite.cs" />
     <Compile Include="MyButton.cs" />
     <Compile Include="MyForm.cs" />
-    <Compile Include="MyMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

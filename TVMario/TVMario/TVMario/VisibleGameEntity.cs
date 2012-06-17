@@ -17,7 +17,7 @@ namespace TVMario
     {
         protected List<My2DSprite> _sprites;
 
-        
+
 
 
         protected int _spritesCount;
@@ -69,7 +69,7 @@ namespace TVMario
             }
         }
 
-        virtual public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color color)
+        virtual public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
         {
             foreach (My2DSprite sprite in _sprites)
             {
@@ -87,20 +87,6 @@ namespace TVMario
             return false;
 
         }
-
-        public virtual bool Init(ContentManager Content, int n, string strResource)
-        {
-            return false;
-        }
-
-        public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-        {
-            //int i;
-            //for (i = 0; i < _nsprite; i++)
-            //    _sprite[i].Draw(gameTime, spriteBatch);
-        }
-
-        
 
     }
 }
