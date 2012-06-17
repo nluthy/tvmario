@@ -77,7 +77,7 @@ namespace TVMario
             //map.Init(Content, 1, "map");
             //tile.Init(Content, 1, "tilesstandard");
             //mario = new Character(Content, "Images/Character/Ma", 15, new Vector2(0, 0), new Vector2(0, 0));
-            _stage.Init(Content, "", "Data/Human.xml", "", "");
+            _stage.Init(Content, "Images\\Maps\\Stage01", "Data/Human.xml", "", "");
         }
 
         /// <summary>
