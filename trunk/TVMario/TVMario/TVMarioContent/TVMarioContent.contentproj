@@ -74,20 +74,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Images\Map\map.bmp">
-      <Name>map</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Images\Map\tilesstandard.png">
-      <Name>tilesstandard</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Images\Character\Ma01.png">
       <Name>Ma01</Name>
       <Importer>TextureImporter</Importer>
@@ -160,95 +146,6 @@
     </Compile>
     <Compile Include="Images\Character\Ma15.png">
       <Name>Ma15</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Images\Map\tile00.png">
-      <Name>tile00</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile01.png">
-      <Name>tile01</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile02.gif">
-      <Name>tile02</Name>
-    </Compile>
-    <Compile Include="Images\Map\tile03.png">
-      <Name>tile03</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile04.gif">
-      <Name>tile04</Name>
-    </Compile>
-    <Compile Include="Images\Map\tile05.gif">
-      <Name>tile05</Name>
-    </Compile>
-    <Compile Include="Images\Map\tile06.gif">
-      <Name>tile06</Name>
-    </Compile>
-    <Compile Include="Images\Map\tile07.gif">
-      <Name>tile07</Name>
-    </Compile>
-    <Compile Include="Images\Map\tile08.png">
-      <Name>tile08</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile09.png">
-      <Name>tile09</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile10.png">
-      <Name>tile10</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile11.png">
-      <Name>tile11</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile13.png">
-      <Name>tile13</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile14.gif">
-      <Name>tile14</Name>
-    </Compile>
-    <Compile Include="Images\Map\tile15.gif">
-      <Name>tile15</Name>
-    </Compile>
-    <Compile Include="Images\Map\tile16.png">
-      <Name>tile16</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile17.png">
-      <Name>tile17</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile18.gif">
-      <Name>tile18</Name>
-    </Compile>
-    <Compile Include="Images\Map\tile19.gif">
-      <Name>tile19</Name>
-    </Compile>
-    <Compile Include="Images\Map\tile20.png">
-      <Name>tile20</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\Map\tile21.png">
-      <Name>tile21</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
