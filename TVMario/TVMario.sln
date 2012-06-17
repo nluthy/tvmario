@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVMario", "TVMario\TVMario\TVMario.csproj", "{F870723D-ED8A-4CE3-8BBC-D2722F25CCCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVMarioContent", "TVMario\TVMarioContent\TVMarioContent.contentproj", "{C376DDEB-29D2-4DA3-B163-B934107363DC}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F870723D-ED8A-4CE3-8BBC-D2722F25CCCF}.Debug|x86.ActiveCfg = Debug|x86
+		{F870723D-ED8A-4CE3-8BBC-D2722F25CCCF}.Debug|x86.Build.0 = Debug|x86
+		{F870723D-ED8A-4CE3-8BBC-D2722F25CCCF}.Release|x86.ActiveCfg = Release|x86
+		{F870723D-ED8A-4CE3-8BBC-D2722F25CCCF}.Release|x86.Build.0 = Release|x86
+		{C376DDEB-29D2-4DA3-B163-B934107363DC}.Debug|x86.ActiveCfg = Debug|x86
+		{C376DDEB-29D2-4DA3-B163-B934107363DC}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
