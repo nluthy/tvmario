@@ -72,12 +72,12 @@ namespace TVMario
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            _form = new MyForm("Forms/MainMenu.xml", Content);
+            _form = new MyForm("Forms/MainMenu.dat", Content);
 
             //map.Init(Content, 1, "map");
             //tile.Init(Content, 1, "tilesstandard");
             //mario = new Character(Content, "Images/Character/Ma", 15, new Vector2(0, 0), new Vector2(0, 0));
-            _stage.Init(Content, "Images\\Maps\\Stage01", "Data/Human.xml", "", "");
+            _stage.Init(Content, "Images\\Maps\\Stage01", "Data/Human.dat", "", "");
         }
 
         /// <summary>

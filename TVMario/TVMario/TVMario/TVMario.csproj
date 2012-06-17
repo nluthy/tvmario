@@ -129,10 +129,14 @@
     <Compile Include="VisibleGameEntity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Human.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="Data\Human.dat">
       <SubType>Designer</SubType>
-    </Content>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Data\Stage01.xml" />
+    <None Include="Forms\MainMenu.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Forms\MainMenu.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
