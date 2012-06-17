@@ -1,0 +1,3 @@
+E:\Projects\VS2010\TVMario\TVMario\TVMarioContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMarioContent\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMarioContent\obj\x86\Debug\ResolveAssemblyReference.cache

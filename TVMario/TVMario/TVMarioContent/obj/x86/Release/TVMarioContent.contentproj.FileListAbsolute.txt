@@ -1,0 +1,3 @@
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMarioContent\obj\x86\Release\ResolveAssemblyReference.cache
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMarioContent\obj\x86\Release\ResolveAssemblyReference.cache
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMarioContent\obj\x86\Release\ResolveAssemblyReference.cache

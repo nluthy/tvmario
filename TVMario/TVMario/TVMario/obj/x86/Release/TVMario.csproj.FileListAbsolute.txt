@@ -1,0 +1,73 @@
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\bin\x86\Release\Forms\MainMenu.xml
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Buttons\ButtonMenu.xnb
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Backgrounds\MainMenu.xnb
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Backgrounds\SubBg.xnb
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\bin\x86\Release\Content\Fonts\Font01.xnb
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\bin\x86\Release\TVMario.exe
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\bin\x86\Release\TVMario.pdb
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\obj\x86\Release\TVMario.exe
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\obj\x86\Release\TVMario.pdb
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Map\map.xnb
+C:\Users\Luan\Desktop\BT_Mario\BT_Mario\src\TVMario\TVMario\TVMario\bin\x86\Release\map.txt
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Forms\MainMenu.xml
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\map.txt
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Buttons\ButtonMenu.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Backgrounds\MainMenu.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Backgrounds\SubBg.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Map\map.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Fonts\Font01.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\TVMario.exe
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\TVMario.pdb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\obj\x86\Release\ResolveAssemblyReference.cache
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\obj\x86\Release\TVMario.exe
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\obj\x86\Release\TVMario.pdb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Map\tilesstandard.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\tile.txt
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma01.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma02.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma03.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma04.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma05.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma06.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma07.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma08.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma09.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma10.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma11.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma12.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma13.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma14.xnb
+E:\LEARN\KHTN\4_Forth Year 2011_2012\2_Semester 2\3_LTGame\Projects\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma15.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Forms\MainMenu.xml
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\map.txt
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\tile.txt
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Buttons\ButtonMenu.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Backgrounds\MainMenu.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Backgrounds\SubBg.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Map\map.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Map\tilesstandard.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma01.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma02.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma03.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma04.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma05.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma06.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma07.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma08.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma09.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma10.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma11.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma12.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma13.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma14.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Images\Character\Ma15.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\Content\Fonts\Font01.xnb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\TVMario.exe
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Release\TVMario.pdb
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\obj\x86\Release\ResolveAssemblyReference.cache
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\obj\x86\Release\TVMario.exe
+D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\obj\x86\Release\TVMario.pdb

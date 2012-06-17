@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Images\Buttons\ButtonMenu.png</Source>
+      <Name>Images\Buttons\ButtonMenu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Buttons\ButtonMenu.xnb</Output>
+      <Time>2012-04-13T18:19:24+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Backgrounds\MainMenu.jpg</Source>
+      <Name>Images\Backgrounds\MainMenu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Backgrounds\MainMenu.xnb</Output>
+      <Time>2012-04-13T18:48:36+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Backgrounds\SubBg.jpg</Source>
+      <Name>Images\Backgrounds\SubBg</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Backgrounds\SubBg.xnb</Output>
+      <Time>2012-04-13T21:52:30+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Map\map.bmp</Source>
+      <Name>Images\Map\map</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Map\map.xnb</Output>
+      <Time>2012-04-14T21:12:12+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Map\tilesstandard.png</Source>
+      <Name>Images\Map\tilesstandard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Map\tilesstandard.xnb</Output>
+      <Time>2012-05-12T21:46:46+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma01.png</Source>
+      <Name>Images\Character\Ma01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma01.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma02.png</Source>
+      <Name>Images\Character\Ma02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma02.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma03.png</Source>
+      <Name>Images\Character\Ma03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma03.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma04.png</Source>
+      <Name>Images\Character\Ma04</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma04.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma05.png</Source>
+      <Name>Images\Character\Ma05</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma05.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma06.png</Source>
+      <Name>Images\Character\Ma06</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma06.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma07.png</Source>
+      <Name>Images\Character\Ma07</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma07.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma08.png</Source>
+      <Name>Images\Character\Ma08</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma08.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma09.png</Source>
+      <Name>Images\Character\Ma09</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma09.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma10.png</Source>
+      <Name>Images\Character\Ma10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma10.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma11.png</Source>
+      <Name>Images\Character\Ma11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma11.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma12.png</Source>
+      <Name>Images\Character\Ma12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma12.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma13.png</Source>
+      <Name>Images\Character\Ma13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma13.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma14.png</Source>
+      <Name>Images\Character\Ma14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma14.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Character\Ma15.png</Source>
+      <Name>Images\Character\Ma15</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Images\Character\Ma15.xnb</Output>
+      <Time>2012-05-12T22:23:04+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Font01.spritefont</Source>
+      <Name>Fonts\Font01</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\Fonts\Font01.xnb</Output>
+      <Time>2012-04-13T18:27:20+07:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMarioContent\</RootDirectory>
+      <LoggerRootDirectory>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMarioContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\TaiLieuDaiHoc\Nam4\2_LapTrinhGame\Do an nhom\TVMario\TVMario\TVMario\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+07:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-02-08T21:54:15.9367415+07:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
