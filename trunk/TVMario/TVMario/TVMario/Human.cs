@@ -17,6 +17,8 @@ namespace TVMario
     public class Human : Character
     {
 
+        public bool isRight = true;
+
         public void Init(ContentManager content, string strXML)
         {
             XmlTextReader xml = new XmlTextReader(strXML);
@@ -43,7 +45,7 @@ namespace TVMario
         {
            
             KeyboardState kbs = Keyboard.GetState();
-            if (kbs.IsKeyDown(Keys.Right))
+            if (kbs.IsKeyDown(Keys.Right) || kbs.IsKeyDown(Keys.Left))
             {
                 
                 if (this._sprites[0].CurrentTexture < this._sprites[0].TexturesCount - 1)
@@ -79,6 +81,19 @@ namespace TVMario
             Vector2 cur = TopLeft;
             cur.Y += value;
             TopLeft = cur;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
+        {
+            if (isRight)
+                base.Draw(spriteBatch, gameTime, color);
+            else
+            {
+                foreach (My2DSprite sprite in _sprites)
+                {
+                    sprite.DrawFlipHorizontal(spriteBatch, gameTime, color);
+                }
+            }
         }
     }
 }

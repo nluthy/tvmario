@@ -97,6 +97,17 @@ namespace TVMario
             spriteBatch.Draw(Textures[CurrentTexture], rect, color);
         }
 
+        public void DrawFlipHorizontal(SpriteBatch spriteBatch, GameTime gameTime, Color color)
+        {
+            Rectangle rect;
+            if (Size.X == 0)
+                rect = new Rectangle((int)Position.X, (int)Position.Y, Textures[0].Width, Textures[0].Height);
+            else
+                rect = new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y); ;
+            //spriteBatch.Draw(Textures[CurrentTexture], rect, color);
+            spriteBatch.Draw(Textures[CurrentTexture], rect, null, color, 0, new Vector2(0, 0), SpriteEffects.FlipHorizontally, 0);
+        }
+
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Rectangle rectangle)
         {
             spriteBatch.Draw(_textures[_currentTexture], new Vector2(_position.X + GlobalSetting._deltaX, _position.Y + GlobalSetting._deltaY), rectangle, Color.White);
