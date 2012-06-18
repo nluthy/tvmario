@@ -18,6 +18,8 @@ namespace TVMario
     {
 
         public bool isRight = true;
+        public bool isJumping = false;
+        public bool isDie = false;
 
         public void Init(ContentManager content, string strXML)
         {

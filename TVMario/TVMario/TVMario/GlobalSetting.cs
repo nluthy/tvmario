@@ -9,7 +9,9 @@ namespace TVMario
     {
         public static float _deltaX = 0;
         public static float _deltaY = 0;
-        public static int GRAVITY = 4;
+        public static int GRAVITY = 2;
+        public static int JUMP = 48;
+        public static int STEP = 2;
         
     }
 }

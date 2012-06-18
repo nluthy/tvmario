@@ -54,7 +54,7 @@ namespace TVMario
             KeyboardState kbs = Keyboard.GetState();
             human.Update(gameTime);
             map.Update(gameTime);
-            if (!HumanIsOnTheGround(human))
+            if (!HumanIsOnTheGround(human) && !human.isJumping)
             {
                 HumanFall();
             }
@@ -75,7 +75,10 @@ namespace TVMario
             if (kbs.IsKeyDown(Keys.Space))
             {
                 if (HumanIsOnTheGround(human))
-                    human.Jump(80);
+                {
+                    human.isJumping = true;
+                    HumanJump();
+                }
             }
 
         }
@@ -175,6 +178,45 @@ namespace TVMario
             {
                 map.MoveRight();
             }
+        }
+
+        private bool HumanCanJump(Human hm)
+        {
+            if (hm.TopLeft.Y <= 631)
+            {
+                int y = (int)hm.TopLeft.Y - 1;
+                int x1 = (int)hm.TopLeft.X + 25;
+                int x2 = (int)hm.TopLeft.X + 30;
+                x1 -= (int)map.TopLeft.X;
+                x2 -= (int)map.TopLeft.X;
+                for (int x = x1 - 24; x <= x2; x++)
+                {
+                    int row = y / map.CELL_HEIGHT;
+                    int col = x / map.CELL_WIDTH;
+                    int cell = map.iCells[row, col];
+                    if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                        return false;
+                }
+            }
+           
+            return true;
+        }
+
+        public void HumanJump()
+        {
+            Human hm = human;
+            for (int i = 0; i < GlobalSetting.JUMP; i++)
+            {
+                hm.Jump(1);
+                if (!HumanCanJump(hm))
+                {
+                    human.Jump(i);
+                    human.isJumping = false;
+                    return;
+                }
+            }
+            human.Jump(GlobalSetting.JUMP);
+            human.isJumping = false;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
