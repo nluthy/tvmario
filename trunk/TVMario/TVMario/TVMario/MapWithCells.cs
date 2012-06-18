@@ -116,7 +116,7 @@ namespace TVMario
             Vector2 ufo = Cells[0, 0].TopLeft;
             if (ufo.X > (-1 * (Size.X - Game1.graphics.GraphicsDevice.Viewport.Width)))
             {
-                moveMap(-1, 0);
+                moveMap(-GlobalSetting.STEP, 0);
             }
         }
 
@@ -125,7 +125,7 @@ namespace TVMario
             Vector2 ufo = Cells[0, 0].TopLeft;
             if (ufo.X < 0)
             {
-                moveMap(1, 0);
+                moveMap(GlobalSetting.STEP, 0);
             }
         }
 
