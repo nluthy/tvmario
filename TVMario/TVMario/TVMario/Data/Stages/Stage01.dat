@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<stage>
+<background>Images\\Maps\\Stage01</background>
+<map>Data/Map01.dat</map>
+<human>Data/Human.dat</human>
+<monsters>Data/Monsters01.dat</monsters>
+</stage>
+
