@@ -59,9 +59,19 @@ namespace TVMario
                 HumanFall();
             }
             if (kbs.IsKeyDown(Keys.Right))
+            {
+                if (human.isRight)
                     HumanRun();
+                else
+                    human.isRight = true;
+            }
             if (kbs.IsKeyDown(Keys.Left))
-                HumanBack();
+            {
+                if (!human.isRight)
+                    HumanBack();
+                else
+                    human.isRight = false;
+            }
             if (kbs.IsKeyDown(Keys.Space))
             {
                 if (HumanIsOnTheGround(human))
