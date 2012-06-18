@@ -31,7 +31,7 @@ namespace TVMario
         //MyMap tile = new MyMap(1,35,49,24,24, "tile.txt");
         //Character mario; 
 
-        Stage _stage = new Stage();
+        Stage _stage;
 
         KeyboardState _kbState;
 
@@ -77,7 +77,8 @@ namespace TVMario
             //map.Init(Content, 1, "map");
             //tile.Init(Content, 1, "tilesstandard");
             //mario = new Character(Content, "Images/Character/Ma", 15, new Vector2(0, 0), new Vector2(0, 0));
-            _stage.Init(Content, "Images\\Maps\\Stage01", "Data/Human.dat", "", "");
+            _stage = new Stage(Content, "Data/Stages/Stage01.dat");
+            //_stage.Init(Content, "Images\\Maps\\Stage01", "Data/Human.dat", "", "");
         }
 
         /// <summary>

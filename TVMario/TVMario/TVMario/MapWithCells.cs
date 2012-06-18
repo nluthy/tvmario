@@ -49,7 +49,7 @@ namespace TVMario
             set { _cells = value; }
         }
 
-        public MapWithCells(ContentManager content, String[] strCells, Vector2 topleft, Vector2 size, int rows, int columns, int[,] cells)
+        public void  Init(ContentManager content, String[] strCells, Vector2 topleft, Vector2 size, int rows, int columns, int[,] cells)
         {
             TopLeft = topleft;
             Size = size;

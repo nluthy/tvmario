@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Xml;
 
 namespace TVMario
 {
@@ -23,6 +24,21 @@ namespace TVMario
         MapWithCells map;
         Human human;
         List<Monster> monsters;
+
+        public Stage(ContentManager content, string strData)
+        {
+            string strBackground, strHuman, strMap, strMonsters;
+            XmlTextReader xml = new XmlTextReader(strData);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xml);
+            XmlNode stage = doc.GetElementsByTagName("stage")[0];
+            strBackground = stage["background"].InnerText;
+            strHuman = stage["human"].InnerText;
+            strMap = stage["map"].InnerText;
+            strMonsters = stage["monsters"].InnerText;
+            xml.Close();
+            Init(content, strBackground, strHuman, strMap, strMonsters);
+        }
 
         public void Init(ContentManager content, string strBackground, string strHuman, string strMap, string strMonsters)
         {
@@ -45,7 +61,7 @@ namespace TVMario
                 {
                     cells[i, j] = rand.Next() % 21;
                 }
-            map = new MapWithCells(content, strCells, new Vector2(0, 0), new Vector2(nColumns * 24, nRows * 24), nRows, nColumns, cells);
+            map.Init(content, strCells, new Vector2(0, 0), new Vector2(nColumns * 24, nRows * 24), nRows, nColumns, cells);
             
         }
 
