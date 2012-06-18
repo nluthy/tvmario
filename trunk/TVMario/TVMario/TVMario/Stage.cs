@@ -46,22 +46,6 @@ namespace TVMario
             human = new Human();
             human.Init(content, strHuman);
             map = new MapWithCells(content, strMap);
-            //Test
-            //String[] strCells = new String[21];
-            //for (int i = 0; i < strCells.Length; i++)
-            //{
-            //    strCells[i] = "Images\\Maps\\Tile" + i.ToString("00");
-            //}
-            //int nRows = 28;
-            //int nColumns = 28;
-            //int[,] cells = new int[nRows, nColumns];
-            //Random rand = new Random();
-            //for (int i = 0; i < nRows; i++)
-            //    for (int j = 0; j < nColumns; j++)
-            //    {
-            //        cells[i, j] = rand.Next() % 21;
-            //    }
-            //map.Init(content, strCells, new Vector2(0, 0), new Vector2(nColumns * 24, nRows * 24), nRows, nColumns, cells);
             
         }
 
