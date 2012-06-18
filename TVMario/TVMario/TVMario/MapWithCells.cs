@@ -50,6 +50,14 @@ namespace TVMario
             set { _cells = value; }
         }
 
+        private int[,] _iCells;
+
+        public int[,] iCells
+        {
+            get { return _iCells; }
+            set { _iCells = value; }
+        }
+
         public MapWithCells(ContentManager content, string strData)
         {
             String[] strCells = new String[21];
@@ -79,7 +87,7 @@ namespace TVMario
             Init(content, strCells, new Vector2(x, y), new Vector2(nColumns * CELL_WIDTH, nRows * CELL_HEIGHT), nRows, nColumns, cells);
         }
 
-        public void  Init(ContentManager content, String[] strCells, Vector2 topleft, Vector2 size, int rows, int columns, int[,] cells)
+        public void Init(ContentManager content, String[] strCells, Vector2 topleft, Vector2 size, int rows, int columns, int[,] cells)
         {
             TopLeft = topleft;
             Size = size;
@@ -87,11 +95,13 @@ namespace TVMario
             nRows = rows;
             nColumns = columns;
 
+            iCells = cells;
+
             Cells = new Cell[nRows, nColumns];
             for (int i = 0; i < nRows; i++)
                 for (int j = 0; j < nColumns; j++)
                 {
-                    Cells[i, j] = new Cell(content, strCells[cells[i, j]], new Vector2(j * CELL_WIDTH, i * CELL_HEIGHT), new Vector2(CELL_WIDTH, CELL_HEIGHT));
+                    Cells[i, j] = new Cell(content, strCells[cells[i, j]], new Vector2(j * CELL_WIDTH + TopLeft.X, i * CELL_HEIGHT + TopLeft.Y), new Vector2(CELL_WIDTH, CELL_HEIGHT));
                 }
             _sprites = new List<My2DSprite>();
         }

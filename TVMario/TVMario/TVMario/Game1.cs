@@ -42,7 +42,7 @@ namespace TVMario
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 900;
+            graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 672;
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
