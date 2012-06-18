@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
 
 
 namespace TVMario
@@ -47,6 +48,35 @@ namespace TVMario
         {
             get { return _cells; }
             set { _cells = value; }
+        }
+
+        public MapWithCells(ContentManager content, string strData)
+        {
+            String[] strCells = new String[21];
+            for (int i = 0; i < strCells.Length; i++)
+            {
+                strCells[i] = "Images\\Maps\\Tile" + i.ToString("00");
+            }
+            StreamReader reader = new StreamReader(strData);
+            string strLine = reader.ReadLine();
+            string[] strArray = strLine.Split(' ');
+            int x = Int32.Parse(strArray[0]);
+            int y = Int32.Parse(strArray[1]);
+            strLine = reader.ReadLine();
+            strArray = strLine.Split(' ');
+            int nRows = Int32.Parse(strArray[0]);
+            int nColumns = Int32.Parse(strArray[1]);
+            int[,] cells = new int[nRows, nColumns];
+            for (int i = 0; i < nRows; i++)
+            {
+                strLine = reader.ReadLine();
+                strArray = strLine.Split(' ');
+                for (int j = 0; j < nColumns; j++)
+                {
+                    cells[i, j] = Int32.Parse(strArray[j]);
+                }
+            }
+            Init(content, strCells, new Vector2(x, y), new Vector2(nColumns * CELL_WIDTH, nRows * CELL_HEIGHT), nRows, nColumns, cells);
         }
 
         public void  Init(ContentManager content, String[] strCells, Vector2 topleft, Vector2 size, int rows, int columns, int[,] cells)
