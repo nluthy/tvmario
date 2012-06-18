@@ -21,7 +21,7 @@ namespace TVMario
 
         public enum GameState { MainMenu, NewGame, Exit };
 
-        GraphicsDeviceManager graphics;
+        public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         MyForm _form;
         GameState _gameState;

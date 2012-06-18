@@ -46,13 +46,54 @@ namespace TVMario
             human = new Human();
             human.Init(content, strHuman);
             map = new MapWithCells(content, strMap);
-            
+
         }
 
         public void Update(GameTime gameTime)
         {
             human.Update(gameTime);
             map.Update(gameTime);
+            if (!HumanIsOnTheGround(human))
+            {
+                HumanFall();
+            }
+        }
+
+        private bool HumanIsOnTheGround(Human hm)
+        {
+            if (hm.TopLeft.Y <= 631)
+            {
+                int y = (int)hm.TopLeft.Y + 40;
+                int x1 = (int)hm.TopLeft.X + 4;
+                int x2 = (int)hm.TopLeft.X + 36;
+                x1 -= (int)map.TopLeft.X;
+                x2 -= (int)map.TopLeft.X;
+                for (int x = x1 - 24; x <= x2; x++)
+                {
+                    int row = y / map.CELL_HEIGHT;
+                    int col = x / map.CELL_WIDTH;
+                    int cell = map.iCells[row, col];
+                    if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                        return true;
+                }
+            }
+            return false;
+        }
+
+
+        public void HumanFall()
+        {
+            Human hm = human;
+            for (int i = 0; i < GlobalSetting.GRAVITY; i++)
+            {
+                hm.Fall(1);
+                if (HumanIsOnTheGround(hm))
+                {
+                    human.Fall(i);
+                    return;
+                }
+            }
+            human.Fall(GlobalSetting.GRAVITY);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

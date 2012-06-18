@@ -138,6 +138,7 @@
     </None>
     <None Include="Data\Stages\Stage01.dat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Forms\MainMenu.dat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
