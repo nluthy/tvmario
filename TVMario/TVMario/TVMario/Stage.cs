@@ -51,12 +51,23 @@ namespace TVMario
 
         public void Update(GameTime gameTime)
         {
+            KeyboardState kbs = Keyboard.GetState();
             human.Update(gameTime);
             map.Update(gameTime);
             if (!HumanIsOnTheGround(human))
             {
                 HumanFall();
             }
+            if (kbs.IsKeyDown(Keys.Right))
+                    HumanRun();
+            if (kbs.IsKeyDown(Keys.Left))
+                HumanBack();
+            if (kbs.IsKeyDown(Keys.Space))
+            {
+                if (HumanIsOnTheGround(human))
+                    human.Jump(80);
+            }
+
         }
 
         private bool HumanIsOnTheGround(Human hm)
@@ -64,8 +75,8 @@ namespace TVMario
             if (hm.TopLeft.Y <= 631)
             {
                 int y = (int)hm.TopLeft.Y + 40;
-                int x1 = (int)hm.TopLeft.X + 4;
-                int x2 = (int)hm.TopLeft.X + 36;
+                int x1 = (int)hm.TopLeft.X + 25;
+                int x2 = (int)hm.TopLeft.X + 30;
                 x1 -= (int)map.TopLeft.X;
                 x2 -= (int)map.TopLeft.X;
                 for (int x = x1 - 24; x <= x2; x++)
@@ -78,6 +89,46 @@ namespace TVMario
                 }
             }
             return false;
+        }
+
+        private bool HumanCanRun(Human hm)
+        {
+            if (hm.TopLeft.Y <= 631)
+            {
+                int x = (int)hm.TopLeft.X + 35;
+                x -= (int)map.TopLeft.X;
+                int y1 = (int)hm.TopLeft.Y+1;
+                int y2 = (int)hm.TopLeft.Y + 39;
+                for (int y = y1; y <= y2; y++)
+                {
+                    int row = y / map.CELL_HEIGHT;
+                    int col = x / map.CELL_WIDTH;
+                    int cell = map.iCells[row, col];
+                    if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        private bool HumanCanBack(Human hm)
+        {
+            if (hm.TopLeft.Y <= 631)
+            {
+                int x = (int)hm.TopLeft.X-1;
+                x -= (int)map.TopLeft.X;
+                int y1 = (int)hm.TopLeft.Y+1;
+                int y2 = (int)hm.TopLeft.Y + 39;
+                for (int y = y1; y <= y2; y++)
+                {
+                    int row = y / map.CELL_HEIGHT;
+                    int col = x / map.CELL_WIDTH;
+                    int cell = map.iCells[row, col];
+                    if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                        return false;
+                }
+            }
+            return true;
         }
 
 
@@ -94,6 +145,26 @@ namespace TVMario
                 }
             }
             human.Fall(GlobalSetting.GRAVITY);
+        }
+
+        public void HumanRun()
+        {
+            if (HumanCanRun(human))
+            {
+                map.MoveLeft();
+                if (human.TopLeft.X < 492)
+                {
+                    human.Run(1);
+                }
+            }
+        }
+
+        public void HumanBack()
+        {
+            if (HumanCanBack(human))
+            {
+                map.MoveRight();
+            }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

@@ -108,25 +108,25 @@ namespace TVMario
 
         public override void Update(GameTime gameTime)
         {
-            Vector2 ufo = Cells[0, 0].TopLeft;
-            KeyboardState kbs = Keyboard.GetState();
-            if (kbs.IsKeyDown(Keys.Left) && ufo.X < 0)
-            {
-                moveMap(4, 0);
-            }
-            if (kbs.IsKeyDown(Keys.Right) && ufo.X > (-1 * (Size.X - Game1.graphics.GraphicsDevice.Viewport.Width)))
-            {
-                moveMap(-4, 0);
-            }
-            if (kbs.IsKeyDown(Keys.Up) && ufo.Y < 0)
-            {
-                moveMap(0, 4);
-            }
-            if (kbs.IsKeyDown(Keys.Down) && ufo.Y > (-1 * (Size.Y - Game1.graphics.GraphicsDevice.Viewport.Height)))
-            {
-                moveMap(0, -4);
-            }
             base.Update(gameTime);
+        }
+
+        public void MoveLeft()
+        {
+            Vector2 ufo = Cells[0, 0].TopLeft;
+            if (ufo.X > (-1 * (Size.X - Game1.graphics.GraphicsDevice.Viewport.Width)))
+            {
+                moveMap(-1, 0);
+            }
+        }
+
+        public void MoveRight()
+        {
+            Vector2 ufo = Cells[0, 0].TopLeft;
+            if (ufo.X < 0)
+            {
+                moveMap(1, 0);
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
