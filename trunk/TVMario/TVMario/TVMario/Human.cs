@@ -38,5 +38,53 @@ namespace TVMario
             xml.Close();
             this.Init(content, strPreTextures, textureCount, topLeft, size);
         }
+
+        public override void Update(GameTime gameTime)
+        {
+           
+            KeyboardState kbs = Keyboard.GetState();
+            if (kbs.IsKeyDown(Keys.Right))
+            {
+                if (this.TopLeft.X < 492)
+                {
+                    Run(4);
+                }
+                if (this._sprites[0].CurrentTexture < this._sprites[0].TexturesCount - 1)
+                    this._sprites[0].CurrentTexture++;
+                else
+                    this._sprites[0].CurrentTexture = 0;
+            }
+            if (kbs.IsKeyDown(Keys.Space))
+            {
+                Jump(20);
+            }
+           
+        }
+
+        public bool onTheGround()
+        {
+            return false;
+        }
+
+        public void Jump(int value)
+        {
+            Vector2 cur = TopLeft;
+            cur.Y -= value;
+            TopLeft = cur;
+        }
+
+        public void Run(int value)
+        {
+            Vector2 cur = TopLeft;
+            cur.X += value;
+            TopLeft = cur;
+        }
+
+        public void Fall(int value)
+        {
+            Vector2 cur = TopLeft;
+            cur.Y += value;
+            TopLeft = cur;
+        }
     }
 }
