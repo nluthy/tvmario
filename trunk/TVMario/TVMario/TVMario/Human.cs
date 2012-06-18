@@ -45,19 +45,13 @@ namespace TVMario
             KeyboardState kbs = Keyboard.GetState();
             if (kbs.IsKeyDown(Keys.Right))
             {
-                if (this.TopLeft.X < 492)
-                {
-                    Run(4);
-                }
+                
                 if (this._sprites[0].CurrentTexture < this._sprites[0].TexturesCount - 1)
                     this._sprites[0].CurrentTexture++;
                 else
                     this._sprites[0].CurrentTexture = 0;
             }
-            if (kbs.IsKeyDown(Keys.Space))
-            {
-                Jump(20);
-            }
+            
            
         }
 
