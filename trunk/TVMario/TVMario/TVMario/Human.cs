@@ -45,18 +45,21 @@ namespace TVMario
 
         public override void Update(GameTime gameTime)
         {
-           
+
             KeyboardState kbs = Keyboard.GetState();
             if (kbs.IsKeyDown(Keys.Right) || kbs.IsKeyDown(Keys.Left))
             {
-                
                 if (this._sprites[0].CurrentTexture < this._sprites[0].TexturesCount - 1)
                     this._sprites[0].CurrentTexture++;
                 else
                     this._sprites[0].CurrentTexture = 0;
             }
-            
-           
+            if (TopLeft.Y > 632)
+            {
+                isDie = true;
+            }
+
+
         }
 
         public bool onTheGround()
@@ -66,6 +69,7 @@ namespace TVMario
 
         public void Jump(int value)
         {
+            _sprites[0].CurrentTexture = 7;
             Vector2 cur = TopLeft;
             cur.Y -= value;
             TopLeft = cur;

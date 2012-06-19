@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace TVMario
 {
-    
+
     /// <summary>
     /// This is the main type for your game
     /// </summary>
@@ -27,9 +27,12 @@ namespace TVMario
         GameState _gameState;
         GameState _prevState;
 
-        //MyMap map = new MyMap(1,35,159,20,20,"map.txt");
-        //MyMap tile = new MyMap(1,35,49,24,24, "tile.txt");
-        //Character mario; 
+        Song _menuSong;
+        Song _backgroundSong;
+        SoundEffect _selectSound;
+        public SoundEffect _jumpSound;
+        public SoundEffect _dieSound;
+
 
         Stage _stage;
 
@@ -73,12 +76,13 @@ namespace TVMario
 
             // TODO: use this.Content to load your game content here
             _form = new MyForm("Forms/MainMenu.dat", Content);
+            _stage = new Stage(Content, "Data/Stages/Stage01.dat", this);
 
-            //map.Init(Content, 1, "map");
-            //tile.Init(Content, 1, "tilesstandard");
-            //mario = new Character(Content, "Images/Character/Ma", 15, new Vector2(0, 0), new Vector2(0, 0));
-            _stage = new Stage(Content, "Data/Stages/Stage01.dat");
-            //_stage.Init(Content, "Images\\Maps\\Stage01", "Data/Human.dat", "", "");
+            _menuSong = Content.Load<Song>(@"Audios/menu");
+            _backgroundSong = Content.Load<Song>(@"Audios/background");
+            _selectSound = Content.Load<SoundEffect>(@"Audios/select");
+            _jumpSound = Content.Load<SoundEffect>(@"Audios/jump");
+            _dieSound = Content.Load<SoundEffect>(@"Audios/die");
         }
 
         /// <summary>
@@ -93,6 +97,7 @@ namespace TVMario
 
         bool loadMenuDone = false;    // Cho biết đã load menu xong chưa
         int _selectedButton = 0;      // Cho biết Button nào đang được chọn
+        bool songPlayed = false;
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -108,6 +113,12 @@ namespace TVMario
             switch (_gameState)
             {
                 case GameState.MainMenu:
+                    if (!songPlayed)
+                    {
+                        MediaPlayer.Play(_menuSong);
+                        MediaPlayer.IsRepeating = true;
+                        songPlayed = true;
+                    }
                     if (!loadMenuDone)
                     {
                         if (_form.Buttons[0].TopLeft.X > 100)
@@ -118,6 +129,7 @@ namespace TVMario
                         }
                         else
                         {
+
                             _form.Buttons[0].Color = Color.Wheat;
                             if (_form.Buttons[1].TopLeft.X > 100)
                             {
@@ -127,6 +139,7 @@ namespace TVMario
                             }
                             else
                             {
+
                                 _form.Buttons[1].Color = Color.Wheat;
                                 if (_form.Buttons[2].TopLeft.X > 100)
                                 {
@@ -136,6 +149,7 @@ namespace TVMario
                                 }
                                 else
                                 {
+
                                     _form.Buttons[2].Color = Color.Wheat;
                                     if (_form.Buttons[3].TopLeft.X > 100)
                                     {
@@ -145,6 +159,7 @@ namespace TVMario
                                     }
                                     else
                                     {
+
                                         _form.Buttons[3].Color = Color.Wheat;
                                         if (_form.Buttons[4].TopLeft.X > 100)
                                         {
@@ -154,6 +169,7 @@ namespace TVMario
                                         }
                                         else
                                         {
+
                                             _form.Buttons[4].Color = Color.Wheat;
                                             loadMenuDone = true;
                                         }
@@ -172,13 +188,19 @@ namespace TVMario
                             if (_kbState.IsKeyDown(Keys.Up))
                             {
                                 if (_selectedButton > 0)
+                                {
                                     _selectedButton--;
+                                    _selectSound.Play();
+                                }
                             }
                             else
                             {
                                 if (_kbState.IsKeyDown(Keys.Down))
                                     if (_selectedButton < 4)
+                                    {
+                                        _selectSound.Play();
                                         _selectedButton++;
+                                    }
                             }
 
                             // Bat su kien enter button
@@ -193,6 +215,8 @@ namespace TVMario
                                 else if (_selectedButton == 0) // New Game
                                 {
                                     _gameState = GameState.NewGame;
+                                    songPlayed = false;
+                                    MediaPlayer.Stop();
                                 }
                             }
 
@@ -207,16 +231,20 @@ namespace TVMario
                     _form.Update(gameTime);
                     break;
                 case GameState.NewGame:
-                    //map.Update(gameTime);
-                    //tile.Update(gameTime);
-                    //mario.Update(gameTime);
+                    if (!songPlayed)
+                    {
+                        
+                        MediaPlayer.Play(_backgroundSong);
+                        MediaPlayer.IsRepeating = true;
+                        songPlayed = true;
+                    }
                     _stage.Update(gameTime);
                     break;
                 case GameState.Exit:
                     this.Exit();
                     break;
             }
-            
+
             base.Update(gameTime);
         }
 
