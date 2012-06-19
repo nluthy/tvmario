@@ -16,8 +16,8 @@
     <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>c5ca5853-de63-4342-8dab-97b999167143</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>Game.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <ApplicationIcon>Paper-Mario.ico</ApplicationIcon>
+    <Thumbnail>icon24.png</Thumbnail>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -129,6 +129,8 @@
     <Compile Include="VisibleGameEntity.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon24.png" />
+    <Content Include="Paper-Mario.ico" />
     <None Include="Data\Human.dat">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
