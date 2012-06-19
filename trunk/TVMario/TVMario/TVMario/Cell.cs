@@ -24,19 +24,28 @@ namespace TVMario
             set { _scale = value; }
         }
 
+        private int _type;
+
+        public int Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
 
 
-        public Cell(ContentManager content, String strMap, Vector2 topleft, Vector2 size)
+
+        public Cell(ContentManager content, String strMap, Vector2 topleft, Vector2 size, int type)
         {
             TopLeft = topleft;
             Size = size;
             Texture2D[] textures = new Texture2D[1];
             textures[0] = content.Load<Texture2D>(strMap);
-            _sprites = new List<My2DSprite>();
+            Sprites = new List<My2DSprite>();
             My2DSprite temp = new My2DSprite(textures, TopLeft);
             temp.Size = this.Size;
-            _sprites.Add(temp);
+            Sprites.Add(temp);
             SpritesCount = 1;
+            _type = type;
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
@@ -44,14 +53,14 @@ namespace TVMario
 
             if (Size.X != 0)
             {
-                _sprites[0].Position = TopLeft * Scale;
-                Vector2 temp = _sprites[0].Size;
+                Sprites[0].Position = TopLeft * Scale;
+                Vector2 temp = Sprites[0].Size;
                 temp.X *= Scale;
                 temp.Y *= Scale;
-                _sprites[0].Size = temp;
+                Sprites[0].Size = temp;
             }
             else
-                _sprites[0].Position = TopLeft;
+                Sprites[0].Position = TopLeft;
             base.Draw(spriteBatch, gameTime, color);
         }
 

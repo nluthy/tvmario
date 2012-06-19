@@ -58,12 +58,20 @@ namespace TVMario
             set { _iCells = value; }
         }
 
+        private String[] _strCells;
+
+        public String[] strCells
+        {
+            get { return _strCells; }
+            set { _strCells = value; }
+        }
+
         public MapWithCells(ContentManager content, string strData)
         {
-            String[] strCells = new String[21];
-            for (int i = 0; i < strCells.Length; i++)
+            _strCells = new String[21];
+            for (int i = 0; i < _strCells.Length; i++)
             {
-                strCells[i] = "Images\\Maps\\Tile" + i.ToString("00");
+                _strCells[i] = "Images\\Maps\\Tile" + i.ToString("00");
             }
             StreamReader reader = new StreamReader(strData);
             string strLine = reader.ReadLine();
@@ -84,7 +92,7 @@ namespace TVMario
                     cells[i, j] = Int32.Parse(strArray[j]);
                 }
             }
-            Init(content, strCells, new Vector2(x, y), new Vector2(nColumns * CELL_WIDTH, nRows * CELL_HEIGHT), nRows, nColumns, cells);
+            Init(content, _strCells, new Vector2(x, y), new Vector2(nColumns * CELL_WIDTH, nRows * CELL_HEIGHT), nRows, nColumns, cells);
         }
 
         public void Init(ContentManager content, String[] strCells, Vector2 topleft, Vector2 size, int rows, int columns, int[,] cells)
@@ -101,9 +109,9 @@ namespace TVMario
             for (int i = 0; i < nRows; i++)
                 for (int j = 0; j < nColumns; j++)
                 {
-                    Cells[i, j] = new Cell(content, strCells[cells[i, j]], new Vector2(j * CELL_WIDTH + TopLeft.X, i * CELL_HEIGHT + TopLeft.Y), new Vector2(CELL_WIDTH, CELL_HEIGHT));
+                    Cells[i, j] = new Cell(content, strCells[cells[i, j]], new Vector2(j * CELL_WIDTH + TopLeft.X, i * CELL_HEIGHT + TopLeft.Y), new Vector2(CELL_WIDTH, CELL_HEIGHT), cells[i,j]);
                 }
-            _sprites = new List<My2DSprite>();
+            Sprites = new List<My2DSprite>();
         }
 
         public override void Update(GameTime gameTime)

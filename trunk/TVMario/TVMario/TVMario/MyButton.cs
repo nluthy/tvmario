@@ -66,9 +66,9 @@ namespace TVMario
                 textures[i] = content.Load<Texture2D>(strTextures[i]);
             }
 
-            _sprites = new List<My2DSprite>();
+            Sprites = new List<My2DSprite>();
             My2DSprite temp = new My2DSprite(textures, TopLeft);
-            _sprites.Add(temp);
+            Sprites.Add(temp);
             SpritesCount = 1;
             _color = Color.White;
             IsSelected = false;
@@ -103,8 +103,8 @@ namespace TVMario
             if (Size.X == 0)
             {
                 Vector2 temp = new Vector2();
-                temp.X = _sprites[0].Width;
-                temp.Y = _sprites[0].Height;
+                temp.X = Sprites[0].Width;
+                temp.Y = Sprites[0].Height;
                 Size = temp;
             }
             _textPos.X += Size.X / 2;
@@ -120,8 +120,8 @@ namespace TVMario
             if (Size.X == 0)
             {
                 Vector2 temp = new Vector2();
-                temp.X = _sprites[0].Width;
-                temp.Y = _sprites[0].Height;
+                temp.X = Sprites[0].Width;
+                temp.Y = Sprites[0].Height;
                 Size = temp;
             }
             _textPos.X += Size.X / 2;

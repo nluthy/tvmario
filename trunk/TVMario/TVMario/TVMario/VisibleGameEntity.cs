@@ -15,7 +15,13 @@ namespace TVMario
 {
     public abstract class VisibleGameEntity : GameEntity
     {
-        protected List<My2DSprite> _sprites;
+        private List<My2DSprite> _sprites;
+
+        public List<My2DSprite> Sprites
+        {
+            get { return _sprites; }
+            set { _sprites = value; }
+        }
 
 
 

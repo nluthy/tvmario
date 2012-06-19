@@ -17,10 +17,23 @@ namespace TVMario
     public class Human : Character
     {
 
-        public bool isRight = true;
-        public bool isJumping = false;
-        public bool isDie = false;
-        public int iLife = 0;
+        public bool _isRight = true;   //  Đang xoay về bên phải
+        public bool _isJumping = false;   //  Đang nhảy
+        public bool _isDie = false;       //  Chết chưa
+        private int _nLife = 0;  // Số mạng
+        private int _nCoin = 0;  // Số xu
+
+        public int nCoin
+        {
+            get { return _nCoin; }
+            set { _nCoin = value; }
+        }
+
+        public int nLife
+        {
+            get { return _nLife; }
+            set { _nLife = value; }
+        }
 
         public void Init(ContentManager content, string strXML)
         {
@@ -44,7 +57,7 @@ namespace TVMario
             int iLife = Int32.Parse(strLife); 
             xml.Close();
             this.Init(content, strPreTextures, textureCount, topLeft, size);
-            this.iLife = iLife;
+            this._nLife = iLife;
         }
 
         public override void Update(GameTime gameTime)
@@ -53,14 +66,14 @@ namespace TVMario
             KeyboardState kbs = Keyboard.GetState();
             if (kbs.IsKeyDown(Keys.Right) || kbs.IsKeyDown(Keys.Left))
             {
-                if (this._sprites[0].CurrentTexture < this._sprites[0].TexturesCount - 1)
-                    this._sprites[0].CurrentTexture++;
+                if (this.Sprites[0].CurrentTexture < this.Sprites[0].TexturesCount - 1)
+                    this.Sprites[0].CurrentTexture++;
                 else
-                    this._sprites[0].CurrentTexture = 0;
+                    this.Sprites[0].CurrentTexture = 0;
             }
             if (TopLeft.Y > 632)
             {
-                isDie = true;
+                _isDie = true;
             }
 
 
@@ -73,7 +86,7 @@ namespace TVMario
 
         public void Jump(int value)
         {
-            _sprites[0].CurrentTexture = 7;
+            Sprites[0].CurrentTexture = 7;
             Vector2 cur = TopLeft;
             cur.Y -= value;
             TopLeft = cur;
@@ -95,11 +108,11 @@ namespace TVMario
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
         {
-            if (isRight)
+            if (_isRight)
                 base.Draw(spriteBatch, gameTime, color);
             else
             {
-                foreach (My2DSprite sprite in _sprites)
+                foreach (My2DSprite sprite in Sprites)
                 {
                     sprite.DrawFlipHorizontal(spriteBatch, gameTime, color);
                 }
@@ -108,12 +121,17 @@ namespace TVMario
 
         public bool Die()
         {
-            if (iLife > 0)
+            if (_nLife > 0)
             {
-                iLife--;
+                _nLife--;
                 return false;
             }
             return true;
+        }
+
+        public bool CollisionWithCell(Cell cell)
+        {
+            return Sprites[0].CheckCollision(cell.Sprites[0]);
         }
     }
 }
