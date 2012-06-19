@@ -16,15 +16,11 @@ namespace TVMario
     public class Stage : InvisibleGameEntity
     {
         private Texture2D _background;
-        public Texture2D Background
-        {
-            get { return _background; }
-            set { _background = value; }
-        }
-        MapWithCells _map;
-        Human _human;
-        List<Monster> _monsters;
-        Game1 _game;
+        private Texture2D _imgCoin;
+        private MapWithCells _map;
+        private Human _human;
+        private List<Monster> _monsters;
+        private Game1 _game;
         bool _gameOver = false;
 
         public Stage(ContentManager content, string strData, Game1 main)
@@ -45,7 +41,8 @@ namespace TVMario
 
         public void Init(ContentManager content, string strBackground, string strHuman, string strMap, string strMonsters)
         {
-            Background = content.Load<Texture2D>(strBackground);
+            _background = content.Load<Texture2D>(strBackground);
+            _imgCoin = content.Load<Texture2D>("Images\\Maps\\Tile08");
             _human = new Human();
             _human.Init(content, strHuman);
             _map = new MapWithCells(content, strMap);
@@ -69,12 +66,12 @@ namespace TVMario
                 {
                     for (int j = 0; j < _map.nColumns; j++)
                     {
-                        if (_map.Cells[i, j].Type == 8)
+                        if (_map.Cells[i, j].Type == GlobalSetting.INDEX_TEXTURE_COIN)
                         {
                             if (_human.CollisionWithCell(_map.Cells[i, j]))
                             {
                                 _game.coinSound.Play();
-                                _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[0], _map.Cells[i, j].TopLeft, _map.Cells[i, j].Size, 0);
+                                _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], _map.Cells[i, j].TopLeft, _map.Cells[i, j].Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT);
                                 _human.nCoin++;
                             }
                         }
@@ -125,7 +122,7 @@ namespace TVMario
                     int row = y / _map.CELL_HEIGHT;
                     int col = x / _map.CELL_WIDTH;
                     int cell = _map.iCells[row, col];
-                    if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                    if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return true;
                 }
             }
@@ -145,7 +142,7 @@ namespace TVMario
                     int row = y / _map.CELL_HEIGHT;
                     int col = x / _map.CELL_WIDTH;
                     int cell = _map.iCells[row, col];
-                    if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                    if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
             }
@@ -165,7 +162,7 @@ namespace TVMario
                     int row = y / _map.CELL_HEIGHT;
                     int col = x / _map.CELL_WIDTH;
                     int cell = _map.iCells[row, col];
-                    if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                    if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
             }
@@ -222,7 +219,7 @@ namespace TVMario
                     int row = y / _map.CELL_HEIGHT;
                     int col = x / _map.CELL_WIDTH;
                     int cell = _map.iCells[row, col];
-                    if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                    if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
             }
@@ -251,8 +248,11 @@ namespace TVMario
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if (Background != null)
+            if (_background != null)
                 spriteBatch.Draw(_background, Vector2.Zero, Color.White);
+            spriteBatch.Draw(_imgCoin, Vector2.Zero, Color.White);
+            SpriteFont font = _game.Content.Load<SpriteFont>("Fonts\\Font01");
+            spriteBatch.DrawString(font, "X" + _human.nCoin, new Vector2(28,0), Color.White);
             _human.Draw(spriteBatch, gameTime, Color.White);
             _map.Draw(spriteBatch, gameTime, Color.White);
         }
