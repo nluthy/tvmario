@@ -30,8 +30,27 @@ namespace TVMario
         Song _menuSong;
         Song _backgroundSong;
         SoundEffect _selectSound;
-        public SoundEffect _jumpSound;
-        public SoundEffect _dieSound;
+        private SoundEffect _jumpSound;
+
+        public SoundEffect jumpSound
+        {
+            get { return _jumpSound; }
+            set { _jumpSound = value; }
+        }
+        private SoundEffect _dieSound;
+
+        public SoundEffect dieSound
+        {
+            get { return _dieSound; }
+            set { _dieSound = value; }
+        }
+        private SoundEffect _coinSound;
+
+        public SoundEffect coinSound
+        {
+            get { return _coinSound; }
+            set { _coinSound = value; }
+        }
 
 
         Stage _stage;
@@ -83,6 +102,7 @@ namespace TVMario
             _selectSound = Content.Load<SoundEffect>(@"Audios/select");
             _jumpSound = Content.Load<SoundEffect>(@"Audios/jump");
             _dieSound = Content.Load<SoundEffect>(@"Audios/die");
+            _coinSound = Content.Load<SoundEffect>(@"Audios/coin");
         }
 
         /// <summary>

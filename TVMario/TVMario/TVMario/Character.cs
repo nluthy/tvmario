@@ -31,9 +31,9 @@ namespace TVMario
                 textures[i] = content.Load<Texture2D>(strTextures[i]);
             }
 
-            _sprites = new List<My2DSprite>();
+            Sprites = new List<My2DSprite>();
             My2DSprite temp = new My2DSprite(textures, TopLeft);
-            _sprites.Add(temp);
+            Sprites.Add(temp);
             SpritesCount = 1;
         }
     }

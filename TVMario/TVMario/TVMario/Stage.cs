@@ -21,9 +21,9 @@ namespace TVMario
             get { return _background; }
             set { _background = value; }
         }
-        MapWithCells map;
-        Human human;
-        List<Monster> monsters;
+        MapWithCells _map;
+        Human _human;
+        List<Monster> _monsters;
         Game1 _game;
         bool _gameOver = false;
 
@@ -46,48 +46,66 @@ namespace TVMario
         public void Init(ContentManager content, string strBackground, string strHuman, string strMap, string strMonsters)
         {
             Background = content.Load<Texture2D>(strBackground);
-            human = new Human();
-            human.Init(content, strHuman);
-            map = new MapWithCells(content, strMap);
+            _human = new Human();
+            _human.Init(content, strHuman);
+            _map = new MapWithCells(content, strMap);
 
         }
 
         public void Update(GameTime gameTime)
         {
-            if (human.isDie)
+            if (_human._isDie)
             {
-               // _game._dieSound.Play();// Nó play hoài, sửa lại
-                _gameOver = human.Die();
+                // _game._dieSound.Play();// Nó play hoài, sửa lại
+                _gameOver = _human.Die();
             }
+            else
+            {
+                KeyboardState kbs = Keyboard.GetState();
+                _human.Update(gameTime);
+                _map.Update(gameTime);
 
-
-            KeyboardState kbs = Keyboard.GetState();
-            human.Update(gameTime);
-            map.Update(gameTime);
-            if (!HumanIsOnTheGround(human) && !human.isJumping)
-            {
-                HumanFall();
-            }
-            if (kbs.IsKeyDown(Keys.Right))
-            {
-                if (human.isRight)
-                    HumanRun();
-                else
-                    human.isRight = true;
-            }
-            if (kbs.IsKeyDown(Keys.Left))
-            {
-                if (!human.isRight)
-                    HumanBack();
-                else
-                    human.isRight = false;
-            }
-            if (kbs.IsKeyDown(Keys.Space))
-            {
-                if (HumanIsOnTheGround(human))
+                for (int i = 0; i < _map.nRows; i++)
                 {
-                    human.isJumping = true;
-                    HumanJump();
+                    for (int j = 0; j < _map.nColumns; j++)
+                    {
+                        if (_map.Cells[i, j].Type == 8)
+                        {
+                            if (_human.CollisionWithCell(_map.Cells[i, j]))
+                            {
+                                _game.coinSound.Play();
+                                _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[0], _map.Cells[i, j].TopLeft, _map.Cells[i, j].Size, 0);
+                                _human.nCoin++;
+                            }
+                        }
+                    }
+                }
+
+                if (!HumanIsOnTheGround(_human) && !_human._isJumping)
+                {
+                    HumanFall();
+                }
+                if (kbs.IsKeyDown(Keys.Right))
+                {
+                    if (_human._isRight)
+                        HumanRun();
+                    else
+                        _human._isRight = true;
+                }
+                if (kbs.IsKeyDown(Keys.Left))
+                {
+                    if (!_human._isRight)
+                        HumanBack();
+                    else
+                        _human._isRight = false;
+                }
+                if (kbs.IsKeyDown(Keys.Space))
+                {
+                    if (HumanIsOnTheGround(_human))
+                    {
+                        _human._isJumping = true;
+                        HumanJump();
+                    }
                 }
             }
 
@@ -100,13 +118,13 @@ namespace TVMario
                 int y = (int)hm.TopLeft.Y + 40;
                 int x1 = (int)hm.TopLeft.X + 25;
                 int x2 = (int)hm.TopLeft.X + 30;
-                x1 -= (int)map.TopLeft.X;
-                x2 -= (int)map.TopLeft.X;
+                x1 -= (int)_map.TopLeft.X;
+                x2 -= (int)_map.TopLeft.X;
                 for (int x = x1 - 24; x <= x2; x++)
                 {
-                    int row = y / map.CELL_HEIGHT;
-                    int col = x / map.CELL_WIDTH;
-                    int cell = map.iCells[row, col];
+                    int row = y / _map.CELL_HEIGHT;
+                    int col = x / _map.CELL_WIDTH;
+                    int cell = _map.iCells[row, col];
                     if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return true;
                 }
@@ -119,14 +137,14 @@ namespace TVMario
             if (hm.TopLeft.Y <= 631)
             {
                 int x = (int)hm.TopLeft.X + 35;
-                x -= (int)map.TopLeft.X;
-                int y1 = (int)hm.TopLeft.Y+1;
+                x -= (int)_map.TopLeft.X;
+                int y1 = (int)hm.TopLeft.Y + 1;
                 int y2 = (int)hm.TopLeft.Y + 39;
                 for (int y = y1; y <= y2; y++)
                 {
-                    int row = y / map.CELL_HEIGHT;
-                    int col = x / map.CELL_WIDTH;
-                    int cell = map.iCells[row, col];
+                    int row = y / _map.CELL_HEIGHT;
+                    int col = x / _map.CELL_WIDTH;
+                    int cell = _map.iCells[row, col];
                     if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
@@ -138,15 +156,15 @@ namespace TVMario
         {
             if (hm.TopLeft.Y <= 631)
             {
-                int x = (int)hm.TopLeft.X-1;
-                x -= (int)map.TopLeft.X;
-                int y1 = (int)hm.TopLeft.Y+1;
+                int x = (int)hm.TopLeft.X - 1;
+                x -= (int)_map.TopLeft.X;
+                int y1 = (int)hm.TopLeft.Y + 1;
                 int y2 = (int)hm.TopLeft.Y + 39;
                 for (int y = y1; y <= y2; y++)
                 {
-                    int row = y / map.CELL_HEIGHT;
-                    int col = x / map.CELL_WIDTH;
-                    int cell = map.iCells[row, col];
+                    int row = y / _map.CELL_HEIGHT;
+                    int col = x / _map.CELL_WIDTH;
+                    int cell = _map.iCells[row, col];
                     if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
@@ -157,36 +175,36 @@ namespace TVMario
 
         public void HumanFall()
         {
-            Human hm = human;
+            Human hm = _human;
             for (int i = 0; i < GlobalSetting.GRAVITY; i++)
             {
                 hm.Fall(1);
                 if (HumanIsOnTheGround(hm))
                 {
-                    human.Fall(i);
+                    _human.Fall(i);
                     return;
                 }
             }
-            human.Fall(GlobalSetting.GRAVITY);
+            _human.Fall(GlobalSetting.GRAVITY);
         }
 
         public void HumanRun()
         {
-            if (HumanCanRun(human))
+            if (HumanCanRun(_human))
             {
-                map.MoveLeft();
-                if (human.TopLeft.X < 492)
+                _map.MoveLeft();
+                if (_human.TopLeft.X < 492)
                 {
-                    human.Run(1);
+                    _human.Run(1);
                 }
             }
         }
 
         public void HumanBack()
         {
-            if (HumanCanBack(human))
+            if (HumanCanBack(_human))
             {
-                map.MoveRight();
+                _map.MoveRight();
             }
         }
 
@@ -197,46 +215,46 @@ namespace TVMario
                 int y = (int)hm.TopLeft.Y - 1;
                 int x1 = (int)hm.TopLeft.X + 25;
                 int x2 = (int)hm.TopLeft.X + 30;
-                x1 -= (int)map.TopLeft.X;
-                x2 -= (int)map.TopLeft.X;
+                x1 -= (int)_map.TopLeft.X;
+                x2 -= (int)_map.TopLeft.X;
                 for (int x = x1 - 24; x <= x2; x++)
                 {
-                    int row = y / map.CELL_HEIGHT;
-                    int col = x / map.CELL_WIDTH;
-                    int cell = map.iCells[row, col];
+                    int row = y / _map.CELL_HEIGHT;
+                    int col = x / _map.CELL_WIDTH;
+                    int cell = _map.iCells[row, col];
                     if (cell != 0 && cell != 8 && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
             }
-           
+
             return true;
         }
 
         public void HumanJump()
         {
-            _game._jumpSound.Play();
-            
-            Human hm = human;
+            _game.jumpSound.Play();
+
+            Human hm = _human;
             for (int i = 0; i < GlobalSetting.JUMP; i++)
             {
                 hm.Jump(1);
                 if (!HumanCanJump(hm))
                 {
-                    human.Jump(i);
-                    human.isJumping = false;
+                    _human.Jump(i);
+                    _human._isJumping = false;
                     return;
                 }
             }
-            human.Jump(GlobalSetting.JUMP);
-            human.isJumping = false;
+            _human.Jump(GlobalSetting.JUMP);
+            _human._isJumping = false;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             if (Background != null)
                 spriteBatch.Draw(_background, Vector2.Zero, Color.White);
-            human.Draw(spriteBatch, gameTime, Color.White);
-            map.Draw(spriteBatch, gameTime, Color.White);
+            _human.Draw(spriteBatch, gameTime, Color.White);
+            _map.Draw(spriteBatch, gameTime, Color.White);
         }
 
     }
