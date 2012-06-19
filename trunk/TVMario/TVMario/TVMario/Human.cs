@@ -20,6 +20,7 @@ namespace TVMario
         public bool isRight = true;
         public bool isJumping = false;
         public bool isDie = false;
+        public int iLife = 0;
 
         public void Init(ContentManager content, string strXML)
         {
@@ -39,8 +40,11 @@ namespace TVMario
             int textureCount = Int32.Parse(human["texturecount"].InnerText);
             Vector2 topLeft = new Vector2(topLeftX, topLeftY);
             Vector2 size = new Vector2(sizeX, sizeY);
+            string strLife = human["life"].InnerText;
+            int iLife = Int32.Parse(strLife); 
             xml.Close();
             this.Init(content, strPreTextures, textureCount, topLeft, size);
+            this.iLife = iLife;
         }
 
         public override void Update(GameTime gameTime)
@@ -100,6 +104,16 @@ namespace TVMario
                     sprite.DrawFlipHorizontal(spriteBatch, gameTime, color);
                 }
             }
+        }
+
+        public bool Die()
+        {
+            if (iLife > 0)
+            {
+                iLife--;
+                return false;
+            }
+            return true;
         }
     }
 }

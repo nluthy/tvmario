@@ -25,6 +25,7 @@ namespace TVMario
         Human human;
         List<Monster> monsters;
         Game1 _game;
+        bool _gameOver = false;
 
         public Stage(ContentManager content, string strData, Game1 main)
         {
@@ -56,6 +57,7 @@ namespace TVMario
             if (human.isDie)
             {
                // _game._dieSound.Play();// Nó play hoài, sửa lại
+                _gameOver = human.Die();
             }
 
 
