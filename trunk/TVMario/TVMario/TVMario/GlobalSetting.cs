@@ -7,11 +7,13 @@ namespace TVMario
 {
     public class GlobalSetting
     {
-        public static float _deltaX = 0;
-        public static float _deltaY = 0;
-        public static int GRAVITY = 2;
-        public static int JUMP = 48;
-        public static int STEP = 2;
+        public static int GRAVITY = 2;  // Trọng lực
+        public static int JUMP = 48;    // Độ cao nhảy
+        public static int STEP_WIDTH = 2;   // Bước đi
+        public static int COIN_TO_LIFE = 10;    // Số xu đủ đổi 1 mạng
+        public static int INDEX_TEXTURE_JUMP = 7;   // Chỉ số khung hình khi nhảy
+        public static int INDEX_TEXTURE_COIN = 8;   // Chỉ số khung hình đồng xu chuẩn
+        public static int INDEX_TEXTURE_TRANSPARENT = 0;    // Chỉ số khung hình trong suốt
         
     }
 }

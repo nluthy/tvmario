@@ -76,6 +76,12 @@ namespace TVMario
                 _isDie = true;
             }
 
+            if (_nCoin == GlobalSetting.COIN_TO_LIFE)
+            {
+                _nCoin = 0;
+                _nLife++;
+            }
+
 
         }
 
@@ -86,7 +92,7 @@ namespace TVMario
 
         public void Jump(int value)
         {
-            Sprites[0].CurrentTexture = 7;
+            Sprites[0].CurrentTexture = GlobalSetting.INDEX_TEXTURE_JUMP;
             Vector2 cur = TopLeft;
             cur.Y -= value;
             TopLeft = cur;
