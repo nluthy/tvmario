@@ -76,7 +76,7 @@ namespace TVMario
                 _isDie = true;
             }
 
-            if (_nCoin == GlobalSetting.COIN_TO_LIFE)
+            if (_nCoin >= GlobalSetting.COIN_TO_LIFE)
             {
                 _nCoin = 0;
                 _nLife++;

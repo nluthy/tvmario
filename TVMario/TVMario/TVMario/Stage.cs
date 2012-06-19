@@ -17,6 +17,7 @@ namespace TVMario
     {
         private Texture2D _background;
         private Texture2D _imgCoin;
+        private Texture2D _imgIcon;
         private MapWithCells _map;
         private Human _human;
         private List<Monster> _monsters;
@@ -43,6 +44,7 @@ namespace TVMario
         {
             _background = content.Load<Texture2D>(strBackground);
             _imgCoin = content.Load<Texture2D>("Images\\Maps\\Tile08");
+            _imgIcon = content.Load<Texture2D>("Images\\Characters\\icon24");
             _human = new Human();
             _human.Init(content, strHuman);
             _map = new MapWithCells(content, strMap);
@@ -253,6 +255,8 @@ namespace TVMario
             spriteBatch.Draw(_imgCoin, Vector2.Zero, Color.White);
             SpriteFont font = _game.Content.Load<SpriteFont>("Fonts\\Font01");
             spriteBatch.DrawString(font, "X" + _human.nCoin, new Vector2(28,0), Color.White);
+            spriteBatch.Draw(_imgIcon, new Vector2(0, 28) , Color.White);
+            spriteBatch.DrawString(font, "X" + _human.nLife, new Vector2(28, 28), Color.White);
             _human.Draw(spriteBatch, gameTime, Color.White);
             _map.Draw(spriteBatch, gameTime, Color.White);
         }
