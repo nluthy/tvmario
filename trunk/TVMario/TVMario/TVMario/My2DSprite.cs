@@ -108,10 +108,10 @@ namespace TVMario
             spriteBatch.Draw(Textures[CurrentTexture], rect, null, color, 0, new Vector2(0, 0), SpriteEffects.FlipHorizontally, 0);
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Rectangle rectangle)
-        {
-            spriteBatch.Draw(_textures[_currentTexture], new Vector2(_position.X + GlobalSetting._deltaX, _position.Y + GlobalSetting._deltaY), rectangle, Color.White);
-        }
+        //public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Rectangle rectangle)
+        //{
+        //    spriteBatch.Draw(_textures[_currentTexture], new Vector2(_position.X, _position.Y), rectangle, Color.White);
+        //}
 
 
         public Rectangle GetBound()
