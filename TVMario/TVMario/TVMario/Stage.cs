@@ -24,9 +24,11 @@ namespace TVMario
         MapWithCells map;
         Human human;
         List<Monster> monsters;
+        Game1 _game;
 
-        public Stage(ContentManager content, string strData)
+        public Stage(ContentManager content, string strData, Game1 main)
         {
+            _game = main;
             string strBackground, strHuman, strMap, strMonsters;
             XmlTextReader xml = new XmlTextReader(strData);
             XmlDocument doc = new XmlDocument();
@@ -51,6 +53,12 @@ namespace TVMario
 
         public void Update(GameTime gameTime)
         {
+            if (human.isDie)
+            {
+               // _game._dieSound.Play();// Nó play hoài, sửa lại
+            }
+
+
             KeyboardState kbs = Keyboard.GetState();
             human.Update(gameTime);
             map.Update(gameTime);
@@ -204,6 +212,8 @@ namespace TVMario
 
         public void HumanJump()
         {
+            _game._jumpSound.Play();
+            
             Human hm = human;
             for (int i = 0; i < GlobalSetting.JUMP; i++)
             {
