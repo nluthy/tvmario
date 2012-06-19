@@ -78,7 +78,7 @@ namespace TVMario
 
             if (_nCoin >= GlobalSetting.COIN_TO_LIFE)
             {
-                _nCoin = 0;
+                _nCoin -= GlobalSetting.COIN_TO_LIFE;
                 _nLife++;
             }
 
