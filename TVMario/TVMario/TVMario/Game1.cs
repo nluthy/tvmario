@@ -79,9 +79,10 @@ namespace TVMario
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            IsMouseVisible = true;
+          
             _gameState = GameState.MainMenu;
             base.Initialize();
+           
         }
 
         /// <summary>

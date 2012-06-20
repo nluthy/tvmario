@@ -57,6 +57,10 @@ namespace TVMario
             {
                 // _game._dieSound.Play();// Nó play hoài, sửa lại
                 _gameOver = _human.Die();
+                if (!_gameOver)
+                {
+                    Restart();
+                }
             }
             else
             {
@@ -80,10 +84,7 @@ namespace TVMario
                     }
                 }
 
-                if (!HumanIsOnTheGround(_human) && !_human._isJumping)
-                {
-                    HumanFall();
-                }
+
                 if (kbs.IsKeyDown(Keys.Right))
                 {
                     if (_human._isRight)
@@ -104,6 +105,27 @@ namespace TVMario
                     {
                         _human._isJumping = true;
                         HumanJump();
+                    }
+                }
+                if (_human._isJumping)
+                {
+                    if (_human.JumpHightNow < _human.jumpHight)
+                    {
+                        _human.Jump(3);
+                        _human.JumpHightNow +=3;
+                    }
+                    else
+                    {
+                        _human._isJumping = false;
+                        _human.jumpHight = 0;
+                        _human.JumpHightNow = 0;
+                    }
+                }
+                else
+                {
+                    if (!HumanIsOnTheGround(_human))
+                    {
+                        HumanFall();
                     }
                 }
             }
@@ -239,13 +261,15 @@ namespace TVMario
                 hm.Jump(1);
                 if (!HumanCanJump(hm))
                 {
-                    _human.Jump(i);
-                    _human._isJumping = false;
+                   // _human.Jump(i);
+                    _human.jumpHight = i;
+                    //_human._isJumping = false;
                     return;
                 }
             }
-            _human.Jump(GlobalSetting.JUMP);
-            _human._isJumping = false;
+            _human.jumpHight = GlobalSetting.JUMP;
+            //_human.Jump(GlobalSetting.JUMP);
+            //_human._isJumping = false;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -259,6 +283,11 @@ namespace TVMario
             spriteBatch.DrawString(font, "X" + _human.nLife, new Vector2(28, 28), Color.White);
             _human.Draw(spriteBatch, gameTime, Color.White);
             _map.Draw(spriteBatch, gameTime, Color.White);
+        }
+
+        public void Restart()
+        {
+            
         }
 
     }
