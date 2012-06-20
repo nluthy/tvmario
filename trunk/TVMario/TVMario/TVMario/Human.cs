@@ -22,6 +22,20 @@ namespace TVMario
         public bool _isDie = false;       //  Chết chưa
         private int _nLife = 0;  // Số mạng
         private int _nCoin = 0;  // Số xu
+        private int _jumpHight = 0; // Độ cao có thể nhảy đc hiện tại
+        private int _jumpHightNow = 0;  // Độ cao đã nhảy
+
+        public int JumpHightNow
+        {
+            get { return _jumpHightNow; }
+            set { _jumpHightNow = value; }
+        }
+
+        public int jumpHight
+        {
+            get { return _jumpHight; }
+            set { _jumpHight = value; }
+        }
 
         public int nCoin
         {
@@ -54,7 +68,7 @@ namespace TVMario
             Vector2 topLeft = new Vector2(topLeftX, topLeftY);
             Vector2 size = new Vector2(sizeX, sizeY);
             string strLife = human["life"].InnerText;
-            int iLife = Int32.Parse(strLife); 
+            int iLife = Int32.Parse(strLife);
             xml.Close();
             this.Init(content, strPreTextures, textureCount, topLeft, size);
             this._nLife = iLife;
@@ -127,6 +141,7 @@ namespace TVMario
 
         public bool Die()
         {
+            _isDie = false;
             if (_nLife > 0)
             {
                 _nLife--;
