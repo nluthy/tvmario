@@ -213,10 +213,21 @@ namespace TVMario
         {
             if (HumanCanRun(_human))
             {
-                _map.MoveLeft();
+                
                 if (_human.TopLeft.X < 492)
                 {
                     _human.Run(1);
+                }
+                else
+                {
+                    bool mapMove = _map.MoveLeft();
+                    if (!mapMove)
+                    {
+                        if (_human.TopLeft.X < (1024 - 40))
+                        {
+                            _human.Run(1);
+                        }
+                    }
                 }
             }
         }
@@ -225,7 +236,22 @@ namespace TVMario
         {
             if (HumanCanBack(_human))
             {
-                _map.MoveRight();
+                if (_human.TopLeft.X > 492)
+                {
+                    _human.Run(-1);
+                }
+                else
+                {
+                    bool mapMove = _map.MoveRight();
+                    if (!mapMove)
+                    {
+                        if (_human.TopLeft.X > 40)
+                        {
+                            _human.Run(-1);
+                        }
+                    }
+                }
+                
             }
         }
 
@@ -278,9 +304,9 @@ namespace TVMario
                 spriteBatch.Draw(_background, Vector2.Zero, Color.White);
             spriteBatch.Draw(_imgCoin, Vector2.Zero, Color.White);
             SpriteFont font = _game.Content.Load<SpriteFont>("Fonts\\Font01");
-            spriteBatch.DrawString(font, "X" + _human.nCoin, new Vector2(28,0), Color.White);
+            spriteBatch.DrawString(font, "x" + _human.nCoin, new Vector2(28,0), Color.White);
             spriteBatch.Draw(_imgIcon, new Vector2(0, 28) , Color.White);
-            spriteBatch.DrawString(font, "X" + _human.nLife, new Vector2(28, 28), Color.White);
+            spriteBatch.DrawString(font, "x" + _human.nLife, new Vector2(28, 28), Color.White);
             _human.Draw(spriteBatch, gameTime, Color.White);
             _map.Draw(spriteBatch, gameTime, Color.White);
         }

@@ -119,22 +119,26 @@ namespace TVMario
             base.Update(gameTime);
         }
 
-        public void MoveLeft()
+        public bool MoveLeft()
         {
             Vector2 ufo = Cells[0, 0].TopLeft;
             if (ufo.X > (-1 * (Size.X - Game1.graphics.GraphicsDevice.Viewport.Width)))
             {
                 moveMap(-GlobalSetting.STEP_WIDTH, 0);
+                return true;
             }
+            return false;
         }
 
-        public void MoveRight()
+        public bool MoveRight()
         {
             Vector2 ufo = Cells[0, 0].TopLeft;
             if (ufo.X < 0)
             {
                 moveMap(GlobalSetting.STEP_WIDTH, 0);
+                return true;
             }
+            return false;
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
