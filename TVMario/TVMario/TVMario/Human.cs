@@ -74,16 +74,18 @@ namespace TVMario
             this._nLife = iLife;
         }
 
+        int count = 0;
         public override void Update(GameTime gameTime)
         {
 
             KeyboardState kbs = Keyboard.GetState();
             if (kbs.IsKeyDown(Keys.Right) || kbs.IsKeyDown(Keys.Left))
             {
-                if (this.Sprites[0].CurrentTexture < this.Sprites[0].TexturesCount - 1)
-                    this.Sprites[0].CurrentTexture++;
-                else
-                    this.Sprites[0].CurrentTexture = 0;
+                count++;
+                if (count % 2 == 0)
+                {
+                    NextFrame();
+                }
             }
             if (TopLeft.Y > 632)
             {
@@ -153,6 +155,14 @@ namespace TVMario
         public bool CollisionWithCell(Cell cell)
         {
             return Sprites[0].CheckCollision(cell.Sprites[0]);
+        }
+
+        public void NextFrame()
+        {
+            if (this.Sprites[0].CurrentTexture < this.Sprites[0].TexturesCount - 1)
+                this.Sprites[0].CurrentTexture++;
+            else
+                this.Sprites[0].CurrentTexture = 0;
         }
     }
 }
