@@ -137,6 +137,10 @@ namespace TVMario
                         HumanFall();
                     }
                 }
+                if (kbs.IsKeyUp(Keys.Left) && kbs.IsKeyUp(Keys.Right) && HumanIsOnTheGround(_human))
+                {
+                    _human.Sprites[0].CurrentTexture = 0;
+                }
             }
 
         }
