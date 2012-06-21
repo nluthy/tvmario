@@ -109,7 +109,12 @@ namespace TVMario
             for (int i = 0; i < nRows; i++)
                 for (int j = 0; j < nColumns; j++)
                 {
-                    Cells[i, j] = new Cell(content, strCells[cells[i, j]], new Vector2(j * CELL_WIDTH + TopLeft.X, i * CELL_HEIGHT + TopLeft.Y), new Vector2(CELL_WIDTH, CELL_HEIGHT), cells[i,j]);
+                    int tileIndex = 0;
+                    if (cells[i, j] < strCells.Length)
+                    {
+                        tileIndex = cells[i, j];
+                    }
+                    Cells[i, j] = new Cell(content, strCells[tileIndex], new Vector2(j * CELL_WIDTH + TopLeft.X, i * CELL_HEIGHT + TopLeft.Y), new Vector2(CELL_WIDTH, CELL_HEIGHT), cells[i,j]);
                 }
             Sprites = new List<My2DSprite>();
         }
