@@ -20,10 +20,10 @@ namespace TVMario
         public bool _isRight = true;   //  Đang xoay về bên phải
         public bool _isJumping = false;   //  Đang nhảy
         public bool _isDie = false;       //  Chết chưa
-        private int _nLife = 0;  // Số mạng
-        private int _nCoin = 0;  // Số xu
-        private int _jumpHight = 0; // Độ cao có thể nhảy đc hiện tại
-        private int _jumpHightNow = 0;  // Độ cao đã nhảy
+        private int _nLife;  // Số mạng
+        private int _nCoin;  // Số xu
+        private int _jumpHight; // Độ cao có thể nhảy đc hiện tại
+        private int _jumpHightNow;  // Độ cao đã nhảy
 
         public int JumpHightNow
         {
@@ -47,6 +47,20 @@ namespace TVMario
         {
             get { return _nLife; }
             set { _nLife = value; }
+        }
+
+        public Human(Human hm)
+        {
+            this.TopLeft = hm.TopLeft;
+            this.Sprites = hm.Sprites;
+        }
+
+        public Human()
+        {
+            _nLife = 0;
+            _nCoin = 0;
+            _jumpHight = 0;
+            _jumpHightNow = 0;
         }
 
         public void Init(ContentManager content, string strXML)
@@ -101,10 +115,7 @@ namespace TVMario
 
         }
 
-        public bool onTheGround()
-        {
-            return false;
-        }
+     
 
         public void Jump(int value)
         {
