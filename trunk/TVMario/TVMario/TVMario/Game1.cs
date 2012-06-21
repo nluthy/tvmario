@@ -79,10 +79,10 @@ namespace TVMario
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-          
+
             _gameState = GameState.MainMenu;
             base.Initialize();
-           
+
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace TVMario
                 case GameState.NewGame:
                     if (!songPlayed)
                     {
-                        
+
                         MediaPlayer.Play(_backgroundSong);
                         MediaPlayer.IsRepeating = true;
                         songPlayed = true;
@@ -266,7 +266,7 @@ namespace TVMario
                     break;
             }
 
-            base.Update(gameTime);
+            //base.Update(gameTime);
         }
 
         /// <summary>
@@ -285,15 +285,12 @@ namespace TVMario
             }
             else if (_gameState == GameState.NewGame)
             {
-                //map.Draw(gameTime, spriteBatch);
-                //tile.Draw(gameTime, spriteBatch);
-                //mario.Draw( spriteBatch, gameTime, Color.White);
                 _stage.Draw(gameTime, spriteBatch);
             }
 
             spriteBatch.End();
 
-            base.Draw(gameTime);
+            //base.Draw(gameTime);
         }
     }
 }

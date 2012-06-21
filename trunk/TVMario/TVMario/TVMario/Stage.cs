@@ -111,8 +111,17 @@ namespace TVMario
                 {
                     if (_human.JumpHightNow < _human.jumpHight)
                     {
-                        _human.Jump(3);
-                        _human.JumpHightNow +=3;
+                        int hight = _human.jumpHight - _human.JumpHightNow;
+                        if ((hight) >= 3)
+                        {
+                            _human.Jump(3);
+                            _human.JumpHightNow += 3;
+                        }
+                        else
+                        {
+                            _human.Jump(hight);
+                            _human.JumpHightNow += hight;
+                        }
                     }
                     else
                     {
@@ -213,10 +222,10 @@ namespace TVMario
         {
             if (HumanCanRun(_human))
             {
-                
+
                 if (_human.TopLeft.X < 492)
                 {
-                    _human.Run(1);
+                    _human.Run(GlobalSetting.STEP_WIDTH);
                 }
                 else
                 {
@@ -225,7 +234,7 @@ namespace TVMario
                     {
                         if (_human.TopLeft.X < (1024 - 40))
                         {
-                            _human.Run(1);
+                            _human.Run(GlobalSetting.STEP_WIDTH);
                         }
                     }
                 }
@@ -238,7 +247,7 @@ namespace TVMario
             {
                 if (_human.TopLeft.X > 492)
                 {
-                    _human.Run(-1);
+                    _human.Run(-GlobalSetting.STEP_WIDTH);
                 }
                 else
                 {
@@ -247,11 +256,11 @@ namespace TVMario
                     {
                         if (_human.TopLeft.X > 40)
                         {
-                            _human.Run(-1);
+                            _human.Run(-GlobalSetting.STEP_WIDTH);
                         }
                     }
                 }
-                
+
             }
         }
 
@@ -272,30 +281,27 @@ namespace TVMario
                     if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         public void HumanJump()
         {
             _game.jumpSound.Play();
 
-            Human hm = _human;
-            for (int i = 0; i < GlobalSetting.JUMP; i++)
+            Human hm = new Human( _human);
+            for (int i = 1; i <= GlobalSetting.JUMP; i++)
             {
                 hm.Jump(1);
                 if (!HumanCanJump(hm))
                 {
-                   // _human.Jump(i);
                     _human.jumpHight = i;
-                    //_human._isJumping = false;
                     return;
                 }
             }
             _human.jumpHight = GlobalSetting.JUMP;
-            //_human.Jump(GlobalSetting.JUMP);
-            //_human._isJumping = false;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -304,8 +310,8 @@ namespace TVMario
                 spriteBatch.Draw(_background, Vector2.Zero, Color.White);
             spriteBatch.Draw(_imgCoin, Vector2.Zero, Color.White);
             SpriteFont font = _game.Content.Load<SpriteFont>("Fonts\\Font01");
-            spriteBatch.DrawString(font, "x" + _human.nCoin, new Vector2(28,0), Color.White);
-            spriteBatch.Draw(_imgIcon, new Vector2(0, 28) , Color.White);
+            spriteBatch.DrawString(font, "x" + _human.nCoin, new Vector2(28, 0), Color.White);
+            spriteBatch.Draw(_imgIcon, new Vector2(0, 28), Color.White);
             spriteBatch.DrawString(font, "x" + _human.nLife, new Vector2(28, 28), Color.White);
             _human.Draw(spriteBatch, gameTime, Color.White);
             _map.Draw(spriteBatch, gameTime, Color.White);
@@ -313,7 +319,7 @@ namespace TVMario
 
         public void Restart()
         {
-            
+
         }
 
     }
