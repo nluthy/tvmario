@@ -129,7 +129,7 @@ namespace TVMario
                             }
                         }
                     }
-                    Cells[i, j] = new Cell(content, strCells[tileIndex], new Vector2(j * CELL_WIDTH + TopLeft.X, i * CELL_HEIGHT + TopLeft.Y), new Vector2(CELL_WIDTH, CELL_HEIGHT), cells[i,j], skillType);
+                    Cells[i, j] = new Cell(content, strCells[tileIndex], new Vector2(j * CELL_WIDTH + TopLeft.X, i * CELL_HEIGHT + TopLeft.Y), new Vector2(CELL_WIDTH, CELL_HEIGHT), tileIndex, skillType);
                 }
             Sprites = new List<My2DSprite>();
         }
