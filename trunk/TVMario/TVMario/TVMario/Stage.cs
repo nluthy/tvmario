@@ -258,7 +258,7 @@ namespace TVMario
 
                 if (kbs.IsKeyDown(Keys.A) && _human.HasSkill(1))
                 {
-
+                    _game.cutSound.Play();
                     foreach (Skill sk in _skills)
                     {
                         if (sk.skillType == 1)
@@ -281,6 +281,7 @@ namespace TVMario
                 {
                     if (kbs.IsKeyDown(Keys.W) && _human.HasSkill(2))
                     {
+                        _game.fireBallSound.Play();
                         foreach (Skill sk in _skills)
                         {
                             if (sk.skillType == 2)
@@ -303,6 +304,7 @@ namespace TVMario
                     {
                         if (kbs.IsKeyDown(Keys.D) && _human.HasSkill(3))
                         {
+                            _game.boltSound.Play();
                             foreach (Skill sk in _skills)
                             {
                                 if (sk.skillType == 3)
@@ -371,7 +373,7 @@ namespace TVMario
                 {
                     int row = y / _map.CELL_HEIGHT;
                     int col = x / _map.CELL_WIDTH;
-                    int cell = _map.iCells[row, col];
+                    int cell = _map.Cells[row, col].Type;
                     if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return true;
                 }
@@ -391,7 +393,7 @@ namespace TVMario
                 {
                     int row = y / _map.CELL_HEIGHT;
                     int col = x / _map.CELL_WIDTH;
-                    int cell = _map.iCells[row, col];
+                    int cell = _map.Cells[row, col].Type;
                     if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
@@ -411,7 +413,7 @@ namespace TVMario
                 {
                     int row = y / _map.CELL_HEIGHT;
                     int col = x / _map.CELL_WIDTH;
-                    int cell = _map.iCells[row, col];
+                    int cell = _map.Cells[row, col].Type;
                     if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
@@ -494,7 +496,7 @@ namespace TVMario
                 {
                     int row = y / _map.CELL_HEIGHT;
                     int col = x / _map.CELL_WIDTH;
-                    int cell = _map.iCells[row, col];
+                    int cell = _map.Cells[row, col].Type;
                     if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return false;
                 }
@@ -570,7 +572,7 @@ namespace TVMario
 
                     if (row >= 0 && col >= 0 && row < _map.nRows && col < _map.nColumns)
                     {
-                        int cell = _map.iCells[row, col];
+                        int cell = _map.Cells[row, col].Type;
                         if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                             return false;
                     }
@@ -591,7 +593,7 @@ namespace TVMario
                     int col = x / _map.CELL_WIDTH;
                     if (row >= 0 && col >= 0 && row < _map.nRows && col < _map.nColumns)
                     {
-                        int cell = _map.iCells[row, col];
+                        int cell = _map.Cells[row, col].Type;
                         if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                             return false;
                     }
@@ -612,7 +614,7 @@ namespace TVMario
                 int col = x / _map.CELL_WIDTH;
                 if (row >= 0 && col >= 0 && row < _map.nRows && col < _map.nColumns)
                 {
-                    int cell = _map.iCells[row, col];
+                    int cell = _map.Cells[row, col].Type;
                     if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
                         return true;
                 }

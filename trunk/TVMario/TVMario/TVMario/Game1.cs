@@ -51,6 +51,27 @@ namespace TVMario
             get { return _coinSound; }
             set { _coinSound = value; }
         }
+        private SoundEffect _cutSound;
+
+        public SoundEffect cutSound
+        {
+            get { return _cutSound; }
+            set { _cutSound = value; }
+        }
+        private SoundEffect _fireBallSound;
+
+        public SoundEffect fireBallSound
+        {
+            get { return _fireBallSound; }
+            set { _fireBallSound = value; }
+        }
+        private SoundEffect _boltSound;
+
+        public SoundEffect boltSound
+        {
+            get { return _boltSound; }
+            set { _boltSound = value; }
+        }
 
 
         Stage _stage;
@@ -104,6 +125,9 @@ namespace TVMario
             _jumpSound = Content.Load<SoundEffect>(@"Audios/jump");
             _dieSound = Content.Load<SoundEffect>(@"Audios/die");
             _coinSound = Content.Load<SoundEffect>(@"Audios/coin");
+            _cutSound = Content.Load<SoundEffect>(@"Audios/cut");
+            _fireBallSound = Content.Load<SoundEffect>(@"Audios/fireball");
+            _boltSound = Content.Load<SoundEffect>(@"Audios/bolt");
         }
 
         /// <summary>
