@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<skill>
+  <pretextures>Images/Effects/fireball</pretextures>
+  <texturecount>6</texturecount>
+  <size>
+    <x>0</x>
+    <y>0</y>
+  </size>
+  <maxlength>80</maxlength>
+  <type>2</type>
+  <damage>4</damage>
+</skill>

@@ -44,6 +44,12 @@
     <skill>
       <data>Data/Skills/Skill01.dat</data>
     </skill>
+    <skill>
+      <data>Data/Skills/Skill02.dat</data>
+    </skill>
+    <skill>
+      <data>Data/Skills/Skill03.dat</data>
+    </skill>
   </skills>
 </stage>
 

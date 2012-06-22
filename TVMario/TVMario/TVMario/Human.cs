@@ -49,6 +49,14 @@ namespace TVMario
             set { _nLife = value; }
         }
 
+        private List<int> _skillList;
+
+        public List<int> skillList
+        {
+            get { return _skillList; }
+            set { _skillList = value; }
+        }
+
         public Human(Human hm)
         {
             this.TopLeft = hm.TopLeft;
@@ -57,6 +65,7 @@ namespace TVMario
 
         public Human()
         {
+            _skillList = new List<int>();
             _nLife = 0;
             _nCoin = 0;
             _jumpHight = 0;
