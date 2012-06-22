@@ -196,8 +196,7 @@ namespace TVMario
 
                 if (kbs.IsKeyDown(Keys.A))
                 {
-                    if (_skills.Count > 0)
-                    {
+                  
                         foreach (Skill sk in _skills)
                         {
                             if (sk.skillType == 1)
@@ -208,8 +207,40 @@ namespace TVMario
                                 sk.show = true;
                             }
                         }
+                                    }
+                else
+                {
+                    if (kbs.IsKeyDown(Keys.W))
+                    {
+                        foreach (Skill sk in _skills)
+                        {
+                            if (sk.skillType == 2)
+                            {
+                                Vector2 cur = _human.TopLeft;
+                                cur.X += 30;
+                                sk.TopLeft = cur;
+                                sk.show = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (kbs.IsKeyDown(Keys.D))
+                        {
+                            foreach (Skill sk in _skills)
+                            {
+                                if (sk.skillType == 3)
+                                {
+                                    Vector2 cur = _human.TopLeft;
+                                    cur.X += 30;
+                                    sk.TopLeft = cur;
+                                    sk.show = true;
+                                }
+                            }
+                        }
                     }
                 }
+
                 if (_skills.Count > 0)
                 {
                     foreach (Skill sk in _skills)
