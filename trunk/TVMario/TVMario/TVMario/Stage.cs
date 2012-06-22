@@ -77,6 +77,8 @@ namespace TVMario
 
         }
 
+        Vector2 _topLeftMapOld = new Vector2();
+        Vector2 _topLeftMapNew = new Vector2();
         public void Update(GameTime gameTime)
         {
             if (_human._isDie)
@@ -104,6 +106,7 @@ namespace TVMario
                         m.Update(gameTime);
                         if (!m.isDie)
                         {
+                            //m.MoveTopLeft(_topLeftMapNew.X - _topLeftMapOld.X);
                             if (MonsterCanMove(m))
                             {
                                 m.Move();
@@ -173,6 +176,7 @@ namespace TVMario
                                         {
                                             if (cell.CollisionWwithHuman(_human))
                                             {
+                                                _game.growSound.Play();
                                                 if (cell.SkillType == 3)
                                                 {
                                                     _map.Cells[i - 1, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_FLOWER], _map.Cells[i - 1, j].TopLeft, _map.Cells[i - 1, j].Size, GlobalSetting.INDEX_TEXTURE_FLOWER, 0);
@@ -448,7 +452,9 @@ namespace TVMario
                 }
                 else
                 {
+                    _topLeftMapOld = _map.TopLeft;
                     bool mapMove = _map.MoveLeft();
+                    _topLeftMapNew = _map.TopLeft;
                     if (!mapMove)
                     {
                         if (_human.TopLeft.X < (1024 - 40))
@@ -563,6 +569,7 @@ namespace TVMario
             if (mt.isRight)
             {
                 int x = (int)mt.TopLeft.X + 23;
+                x -= (int)_map.TopLeft.X;
                 int y1 = (int)mt.TopLeft.Y + 1;
                 int y2 = (int)mt.TopLeft.Y + 31;
                 for (int y = y1; y <= y2; y++)
@@ -585,6 +592,7 @@ namespace TVMario
             else
             {
                 int x = (int)mt.TopLeft.X - 1;
+                x -= (int)_map.TopLeft.X;
                 int y1 = (int)mt.TopLeft.Y + 1;
                 int y2 = (int)mt.TopLeft.Y + 31;
                 for (int y = y1; y <= y2; y++)

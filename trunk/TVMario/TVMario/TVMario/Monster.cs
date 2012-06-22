@@ -44,6 +44,14 @@ namespace TVMario
             isRight = false;
         }
 
+        private Vector2 _topLeftBegin;
+
+        public Vector2 topLeftBegin
+        {
+            get { return _topLeftBegin; }
+            set { _topLeftBegin = value; }
+        }
+
         
 
         public void Init(ContentManager content, Vector2 topLeft, string strData)
@@ -68,6 +76,7 @@ namespace TVMario
         private void Init(ContentManager content, string strPreTextures, int textureCount, Vector2 topLeft, Vector2 size, int blood)
         {
             this.blood = blood;
+            topLeftBegin = topLeft;
             Init(content, strPreTextures, textureCount, topLeft, size);
         }
 
@@ -149,6 +158,13 @@ namespace TVMario
         {
             Vector2 cur = TopLeft;
             cur.Y += value;
+            TopLeft = cur;
+        }
+
+        public void MoveTopLeft(float value)
+        {
+            Vector2 cur = TopLeft;
+            cur.X += value;
             TopLeft = cur;
         }
     }

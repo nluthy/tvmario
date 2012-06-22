@@ -72,6 +72,13 @@ namespace TVMario
             get { return _boltSound; }
             set { _boltSound = value; }
         }
+        private SoundEffect _growSound;
+
+        public SoundEffect growSound
+        {
+            get { return _growSound; }
+            set { _growSound = value; }
+        }
 
 
         Stage _stage;
@@ -128,6 +135,7 @@ namespace TVMario
             _cutSound = Content.Load<SoundEffect>(@"Audios/cut");
             _fireBallSound = Content.Load<SoundEffect>(@"Audios/fireball");
             _boltSound = Content.Load<SoundEffect>(@"Audios/bolt");
+            _growSound = Content.Load<SoundEffect>(@"Audios/grow");
         }
 
         /// <summary>
