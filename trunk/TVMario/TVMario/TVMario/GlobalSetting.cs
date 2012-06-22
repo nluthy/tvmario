@@ -7,6 +7,8 @@ namespace TVMario
 {
     public class GlobalSetting
     {
+       
+
         public static int GRAVITY = 2;  // Trọng lực
         public static int JUMP = 85;    // Độ cao tối đa nhảy đc
         public static int JUMP_STEP = 5;    // Độ cao 1 bước nhảy
