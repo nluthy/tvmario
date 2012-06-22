@@ -110,11 +110,26 @@ namespace TVMario
                 for (int j = 0; j < nColumns; j++)
                 {
                     int tileIndex = 0;
+                    int skillType = 0;
                     if (cells[i, j] < strCells.Length)
                     {
                         tileIndex = cells[i, j];
                     }
-                    Cells[i, j] = new Cell(content, strCells[tileIndex], new Vector2(j * CELL_WIDTH + TopLeft.X, i * CELL_HEIGHT + TopLeft.Y), new Vector2(CELL_WIDTH, CELL_HEIGHT), cells[i,j]);
+                    else
+                    {
+                        if (cells[i, j] == 90)
+                        {
+                            skillType = 3;
+                        }
+                        else
+                        {
+                            if (cells[i, j] == 88)
+                            {
+                                skillType = 2;
+                            }
+                        }
+                    }
+                    Cells[i, j] = new Cell(content, strCells[tileIndex], new Vector2(j * CELL_WIDTH + TopLeft.X, i * CELL_HEIGHT + TopLeft.Y), new Vector2(CELL_WIDTH, CELL_HEIGHT), cells[i,j], skillType);
                 }
             Sprites = new List<My2DSprite>();
         }

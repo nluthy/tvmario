@@ -66,6 +66,7 @@ namespace TVMario
         public Human()
         {
             _skillList = new List<int>();
+            _skillList.Add(1);
             _nLife = 0;
             _nCoin = 0;
             _jumpHight = 0;
@@ -188,6 +189,16 @@ namespace TVMario
                 this.Sprites[0].CurrentTexture++;
             else
                 this.Sprites[0].CurrentTexture = 0;
+        }
+
+        public bool HasSkill(int type)
+        {
+            for (int i = 0; i < skillList.Count; i++)
+            {
+                if (skillList[i] == type)
+                    return true;
+            }
+            return false;
         }
     }
 }
