@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <skill>
-  <pretextures>Images/Effects/bolt</pretextures>
-  <texturecount>10</texturecount>
+  <pretextures>Images/Effects/cut</pretextures>
+  <texturecount>5</texturecount>
   <size>
     <x>0</x>
     <y>0</y>
   </size>
-  <maxlength>80</maxlength>
+  <maxlength>10</maxlength>
+  <type>1</type>
+  <damage>3</damage>
 </skill>

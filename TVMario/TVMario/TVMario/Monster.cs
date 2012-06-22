@@ -31,11 +31,20 @@ namespace TVMario
             set { _isRight = value; }
         }
 
+        private int _blood;
+
+        public int blood
+        {
+            get { return _blood; }
+            set { _blood = value; }
+        }
         public Monster()
         {
             isDie = false;
             isRight = false;
         }
+
+        
 
         public void Init(ContentManager content, Vector2 topLeft, string strData)
         {
@@ -44,29 +53,44 @@ namespace TVMario
             doc.Load(xml);
             XmlNode monster = doc.GetElementsByTagName("monster")[0];
             string strPreTextures = monster["pretextures"].InnerText;
+            string strBlood = monster["blood"].InnerText;
             string strSizeX = monster["size"]["x"].InnerText;
             string strSizeY = monster["size"]["y"].InnerText;
             float sizeX = float.Parse(strSizeX);
             float sizeY = float.Parse(strSizeY);
             int textureCount = Int32.Parse(monster["texturecount"].InnerText);
+            int blood = Int32.Parse(strBlood);
             Vector2 size = new Vector2(sizeX, sizeY);
             xml.Close();
-            this.Init(content, strPreTextures, textureCount, topLeft, size);
+            this.Init(content, strPreTextures, textureCount, topLeft, size, blood);
+        }
+
+        private void Init(ContentManager content, string strPreTextures, int textureCount, Vector2 topLeft, Vector2 size, int blood)
+        {
+            this.blood = blood;
+            Init(content, strPreTextures, textureCount, topLeft, size);
         }
 
         int count = 0;
         public override void Update(GameTime gameTime)
         {
-            count++;
-            if (count % 8 == 0)
+            if (blood <= 0)
             {
-                NextFrame();
+                isDie = true;
             }
+            
 
             if (!isDie)
             {
+                count++;
+                if (count % 8 == 0)
+                {
+                    NextFrame();
+                }
                 Move();
             }
+
+            
             //base.Update(gameTime);
         }
 
