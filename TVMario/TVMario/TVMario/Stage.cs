@@ -97,7 +97,7 @@ namespace TVMario
                 {
                     foreach (Monster m in _monsters)
                     {
-                        if (_human.CollisionWithMonster(m))
+                        if (_human.CollisionWithMonster(m) && !m.isDie)
                         {
                             _human._isDie = true;
                         }
