@@ -24,14 +24,13 @@ namespace TVMario
         private List<Skill> _skills;
         private Game1 _game;
         bool _gameOver = false;
+        private string strData;
 
 
 
-
-        public Stage(ContentManager content, string strData, Game1 main)
+        public void Init(ContentManager content, string strData, Game1 main)
         {
-            _monsters = new List<Monster>();
-            _skills = new List<Skill>();
+            this.strData = strData;
             _game = main;
             string strBackground, strHuman, strMap;
             XmlTextReader xml = new XmlTextReader(strData);
@@ -66,14 +65,24 @@ namespace TVMario
             Init(content, strBackground, strHuman, strMap);
         }
 
+        public Stage()
+        {
+            _monsters = new List<Monster>();
+            _skills = new List<Skill>();
+
+        }
+
         public void Init(ContentManager content, string strBackground, string strHuman, string strMap)
         {
-            _background = content.Load<Texture2D>(strBackground);
+            if (strBackground != null && strBackground != "")
+                _background = content.Load<Texture2D>(strBackground);
             _imgCoin = content.Load<Texture2D>("Images\\Maps\\Tile08");
             _imgIcon = content.Load<Texture2D>("Images\\Characters\\icon24");
             _human = new Human();
-            _human.Init(content, strHuman);
-            _map = new MapWithCells(content, strMap);
+            if (strHuman != null && strHuman != "")
+                _human.Init(content, strHuman);
+            if (strMap != null && strMap != "")
+                _map = new MapWithCells(content, strMap);
 
         }
 
@@ -462,6 +471,13 @@ namespace TVMario
                             _human.Run(GlobalSetting.STEP_WIDTH);
                         }
                     }
+                    else
+                    {
+                        foreach (Monster m in _monsters)
+                        {
+                            m.MoveTopLeft(-GlobalSetting.STEP_WIDTH);
+                        }
+                    }
                 }
             }
         }
@@ -482,6 +498,13 @@ namespace TVMario
                         if (_human.TopLeft.X > 40)
                         {
                             _human.Run(-GlobalSetting.STEP_WIDTH);
+                        }
+                    }
+                    else
+                    {
+                        foreach (Monster m in _monsters)
+                        {
+                            m.MoveTopLeft(GlobalSetting.STEP_WIDTH);
                         }
                     }
                 }
@@ -538,7 +561,8 @@ namespace TVMario
             spriteBatch.DrawString(font, "x" + _human.nCoin, new Vector2(28, 0), Color.White);
             spriteBatch.Draw(_imgIcon, new Vector2(0, 28), Color.White);
             spriteBatch.DrawString(font, "x" + _human.nLife, new Vector2(28, 28), Color.White);
-            _human.Draw(spriteBatch, gameTime, Color.White);
+            if (!_human._isDie)
+                _human.Draw(spriteBatch, gameTime, Color.White);
             _map.Draw(spriteBatch, gameTime, Color.White);
             if (_monsters.Count > 0)
             {
@@ -647,7 +671,32 @@ namespace TVMario
 
         public void Restart()
         {
+            ReInit(_game.Content, strData);
+            _human.TopLeft = _human.topLeftBegin;
+            _map.TopLeft = Vector2.Zero;
+        }
 
+        public void ReInit(ContentManager content, string strData)
+        {
+            XmlTextReader xml = new XmlTextReader(strData);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xml);
+            XmlNode stage = doc.GetElementsByTagName("stage")[0];
+            _monsters.Clear();
+            XmlNodeList monsterNodeList = stage["monsters"].ChildNodes;
+            foreach (XmlNode node in monsterNodeList)
+            {
+                string strTopLeftX = node["topleft"]["x"].InnerText;
+                string strTopLeftY = node["topleft"]["y"].InnerText;
+                float topLeftX = float.Parse(strTopLeftX);
+                float topLeftY = float.Parse(strTopLeftY);
+                Vector2 topLeft = new Vector2(topLeftX, topLeftY);
+                string strMonsterData = node["data"].InnerText;
+                Monster monster = new Monster();
+                monster.Init(content, topLeft, strMonsterData);
+                this._monsters.Add(monster);
+            }
+            xml.Close();
         }
 
     }

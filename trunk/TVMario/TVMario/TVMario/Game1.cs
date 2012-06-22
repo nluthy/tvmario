@@ -124,7 +124,8 @@ namespace TVMario
 
             // TODO: use this.Content to load your game content here
             _form = new MyForm("Forms/MainMenu.dat", Content);
-            _stage = new Stage(Content, "Data/Stages/Stage01.dat", this);
+            _stage = new Stage();
+            _stage.Init(Content, "Data/Stages/Stage01.dat", this);
 
             _menuSong = Content.Load<Song>(@"Audios/menu");
             _backgroundSong = Content.Load<Song>(@"Audios/background");

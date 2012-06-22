@@ -57,6 +57,14 @@ namespace TVMario
             set { _skillList = value; }
         }
 
+        private Vector2 _topLeftBegin;
+
+        public Vector2 topLeftBegin
+        {
+            get { return _topLeftBegin; }
+            set { _topLeftBegin = value; }
+        }
+
         public Human(Human hm)
         {
             this.TopLeft = hm.TopLeft;
@@ -95,6 +103,7 @@ namespace TVMario
             int iLife = Int32.Parse(strLife);
             xml.Close();
             this.Init(content, strPreTextures, textureCount, topLeft, size);
+            topLeftBegin = TopLeft;
             this._nLife = iLife;
         }
 
