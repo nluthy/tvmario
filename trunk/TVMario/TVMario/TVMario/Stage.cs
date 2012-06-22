@@ -88,6 +88,14 @@ namespace TVMario
                     foreach (Monster m in _monsters)
                     {
                         m.Update(gameTime);
+                        if (MonsterCanMove(m))
+                        {
+                            m.Move();
+                        }
+                        else
+                        {
+                            m.ChangeDirection();
+                        }
                     }
                 }
 
@@ -318,7 +326,7 @@ namespace TVMario
         {
             _game.jumpSound.Play();
 
-            Human hm = new Human( _human);
+            Human hm = new Human(_human);
             for (int i = 1; i <= GlobalSetting.JUMP; i++)
             {
                 hm.Jump(1);
@@ -348,6 +356,52 @@ namespace TVMario
                 {
                     m.Draw(spriteBatch, gameTime, Color.White);
                 }
+            }
+        }
+
+
+        public bool MonsterCanMove(Monster mt)
+        {
+            if (mt.isRight)
+            {
+                int x = (int)mt.TopLeft.X + 23;
+                int y1 = (int)mt.TopLeft.Y + 1;
+                int y2 = (int)mt.TopLeft.Y + 31;
+                for (int y = y1; y <= y2; y++)
+                {
+                    int row = y / _map.CELL_HEIGHT;
+                    int col = x / _map.CELL_WIDTH;
+
+                    if (row >= 0 && col >= 0 && row < _map.nRows && col < _map.nColumns)
+                    {
+                        int cell = _map.iCells[row, col];
+                        if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                            return false;
+                    }
+                    else
+                        return false;
+                }
+                return true;
+
+            }
+            else
+            {
+                int x = (int)mt.TopLeft.X - 1;
+                int y1 = (int)mt.TopLeft.Y + 1;
+                int y2 = (int)mt.TopLeft.Y + 31;
+                for (int y = y1; y <= y2; y++)
+                {
+                    int row = y / _map.CELL_HEIGHT;
+                    int col = x / _map.CELL_WIDTH;
+                    if (row >= 0 && col >= 0 && row < _map.nRows && col < _map.nColumns)
+                    {
+                        int cell = _map.iCells[row, col];
+                        if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                            return false;
+                    }
+                    else return false;
+                }
+                return true;
             }
         }
 
