@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<monster>
+  <pretextures>Images/Characters/Monsters/Monster02_</pretextures>
+  <texturecount>4</texturecount>
+  <size>
+    <x>0</x>
+    <y>0</y>
+  </size>
+</monster>

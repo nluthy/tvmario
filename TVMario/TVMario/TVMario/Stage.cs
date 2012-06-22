@@ -24,10 +24,14 @@ namespace TVMario
         private Game1 _game;
         bool _gameOver = false;
 
+
+
+
         public Stage(ContentManager content, string strData, Game1 main)
         {
+            _monsters = new List<Monster>();
             _game = main;
-            string strBackground, strHuman, strMap, strMonsters;
+            string strBackground, strHuman, strMap;
             XmlTextReader xml = new XmlTextReader(strData);
             XmlDocument doc = new XmlDocument();
             doc.Load(xml);
@@ -35,12 +39,24 @@ namespace TVMario
             strBackground = stage["background"].InnerText;
             strHuman = stage["human"].InnerText;
             strMap = stage["map"].InnerText;
-            strMonsters = stage["monsters"].InnerText;
+            XmlNodeList monsterNodeList = stage["monsters"].ChildNodes;
+            foreach (XmlNode node in monsterNodeList)
+            {
+                string strTopLeftX = node["topleft"]["x"].InnerText;
+                string strTopLeftY = node["topleft"]["y"].InnerText;
+                float topLeftX = float.Parse(strTopLeftX);
+                float topLeftY = float.Parse(strTopLeftY);
+                Vector2 topLeft = new Vector2(topLeftX, topLeftY);
+                string strMonsterData = node["data"].InnerText;
+                Monster monster = new Monster();
+                monster.Init(content, topLeft, strMonsterData);
+                this._monsters.Add(monster);
+            }
             xml.Close();
-            Init(content, strBackground, strHuman, strMap, strMonsters);
+            Init(content, strBackground, strHuman, strMap);
         }
 
-        public void Init(ContentManager content, string strBackground, string strHuman, string strMap, string strMonsters)
+        public void Init(ContentManager content, string strBackground, string strHuman, string strMap)
         {
             _background = content.Load<Texture2D>(strBackground);
             _imgCoin = content.Load<Texture2D>("Images\\Maps\\Tile08");
@@ -67,6 +83,13 @@ namespace TVMario
                 KeyboardState kbs = Keyboard.GetState();
                 _human.Update(gameTime);
                 _map.Update(gameTime);
+                if (_monsters.Count > 0)
+                {
+                    foreach (Monster m in _monsters)
+                    {
+                        m.Update(gameTime);
+                    }
+                }
 
                 for (int i = 0; i < _map.nRows; i++)
                 {
@@ -112,10 +135,10 @@ namespace TVMario
                     if (_human.JumpHightNow < _human.jumpHight)
                     {
                         int hight = _human.jumpHight - _human.JumpHightNow;
-                        if ((hight) >= 3)
+                        if ((hight) >= GlobalSetting.JUMP_STEP)
                         {
-                            _human.Jump(3);
-                            _human.JumpHightNow += 3;
+                            _human.Jump(GlobalSetting.JUMP_STEP);
+                            _human.JumpHightNow += GlobalSetting.JUMP_STEP;
                         }
                         else
                         {
@@ -319,6 +342,13 @@ namespace TVMario
             spriteBatch.DrawString(font, "x" + _human.nLife, new Vector2(28, 28), Color.White);
             _human.Draw(spriteBatch, gameTime, Color.White);
             _map.Draw(spriteBatch, gameTime, Color.White);
+            if (_monsters.Count > 0)
+            {
+                foreach (Monster m in _monsters)
+                {
+                    m.Draw(spriteBatch, gameTime, Color.White);
+                }
+            }
         }
 
         public void Restart()
