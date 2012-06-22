@@ -100,6 +100,10 @@ namespace TVMario
                         {
                             m.ChangeDirection();
                         }
+                        if (!MonsterIsOnTheGround(m))
+                        {
+
+                        }
                     }
                 }
 
@@ -407,6 +411,40 @@ namespace TVMario
                 }
                 return true;
             }
+        }
+
+        private bool MonsterIsOnTheGround(Monster mt)
+        {
+            int y = (int)mt.TopLeft.Y + 32;
+            int x1 = (int)mt.TopLeft.X;
+            int x2 = (int)mt.TopLeft.X + 24;
+            for (int x = x1 - 24; x <= x2; x++)
+            {
+                int row = y / _map.CELL_HEIGHT;
+                int col = x / _map.CELL_WIDTH;
+                if (row >= 0 && col >= 0 && row < _map.nRows && col < _map.nColumns)
+                {
+                    int cell = _map.iCells[row, col];
+                    if (cell != GlobalSetting.INDEX_TEXTURE_TRANSPARENT && cell != GlobalSetting.INDEX_TEXTURE_COIN && cell != 9 && cell != 10 && cell != 12 && cell != 13)
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        public void MonsterFall(ref Monster mt)
+        {
+            Monster mon = mt;
+            for (int i = 0; i < GlobalSetting.GRAVITY; i++)
+            {
+                mon.Fall(1);
+                if (MonsterIsOnTheGround(mon))
+                {
+                    mt.Fall(i);
+                    return;
+                }
+            }
+            mt.Fall(GlobalSetting.GRAVITY);
         }
 
         public void Restart()

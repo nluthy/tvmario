@@ -120,5 +120,12 @@ namespace TVMario
                 }
             }
         }
+
+        public void Fall(int value)
+        {
+            Vector2 cur = TopLeft;
+            cur.Y += value;
+            TopLeft = cur;
+        }
     }
 }
