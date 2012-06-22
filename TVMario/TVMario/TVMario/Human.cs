@@ -75,7 +75,7 @@ namespace TVMario
         {
             _skillList = new List<int>();
             _skillList.Add(1);
-            _nLife = 0;
+            _nLife = 5;
             _nCoin = 0;
             _jumpHight = 0;
             _jumpHightNow = 0;
@@ -99,12 +99,10 @@ namespace TVMario
             int textureCount = Int32.Parse(human["texturecount"].InnerText);
             Vector2 topLeft = new Vector2(topLeftX, topLeftY);
             Vector2 size = new Vector2(sizeX, sizeY);
-            string strLife = human["life"].InnerText;
-            int iLife = Int32.Parse(strLife);
             xml.Close();
             this.Init(content, strPreTextures, textureCount, topLeft, size);
             topLeftBegin = TopLeft;
-            this._nLife = iLife;
+            
         }
 
         int count = 0;
