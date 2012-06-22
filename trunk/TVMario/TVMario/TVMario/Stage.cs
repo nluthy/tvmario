@@ -87,6 +87,10 @@ namespace TVMario
                 {
                     foreach (Monster m in _monsters)
                     {
+                        if (_human.CollisionWithMonster(m))
+                        {
+                            _human._isDie = true;
+                        }
                         m.Update(gameTime);
                         if (MonsterCanMove(m))
                         {

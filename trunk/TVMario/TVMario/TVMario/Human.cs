@@ -168,6 +168,11 @@ namespace TVMario
             return Sprites[0].CheckCollision(cell.Sprites[0]);
         }
 
+        public bool CollisionWithMonster(Monster mt)
+        {
+            return Sprites[0].CheckCollision(mt.Sprites[0]);
+        }
+
         public void NextFrame()
         {
             if (this.Sprites[0].CurrentTexture < this.Sprites[0].TexturesCount - 1)
