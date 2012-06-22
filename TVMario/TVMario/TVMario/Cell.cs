@@ -76,8 +76,7 @@ namespace TVMario
 
         public bool CollisionWwithHuman(Human hm)
         {
-            return (Sprites[0].CheckCollision(hm.Sprites[0]) && hm.TopLeft.Y <= TopLeft.Y + Sprites[0].Height-1);
-            //
+            return (Sprites[0].CheckCollision(hm.Sprites[0]) && hm.TopLeft.Y >= TopLeft.Y + Sprites[0].Height - 1);
         }
 
     }
