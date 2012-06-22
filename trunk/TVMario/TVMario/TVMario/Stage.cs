@@ -594,6 +594,18 @@ namespace TVMario
                     }
                 }
             }
+            spriteBatch.DrawString(font, "Skills:", new Vector2(880, 0), Color.LightBlue);
+            SpriteFont font2 = _game.Content.Load<SpriteFont>("Fonts\\Font02");
+            spriteBatch.DrawString(font2, "Air Blade: Press A to use", new Vector2(880, 24), Color.White);
+            if (_human.HasSkill(2))
+            {
+                spriteBatch.DrawString(font2, "Fire Ball: Press W to use", new Vector2(880, 42), Color.White);
+            }
+            if (_human.HasSkill(3))
+            {
+                spriteBatch.DrawString(font2, "Bolt: Press D to use", new Vector2(880, 60), Color.White);
+            }
+
         }
 
 
