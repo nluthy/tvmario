@@ -102,17 +102,20 @@ namespace TVMario
                             _human._isDie = true;
                         }
                         m.Update(gameTime);
-                        if (MonsterCanMove(m))
+                        if (!m.isDie)
                         {
-                            m.Move();
-                        }
-                        else
-                        {
-                            m.ChangeDirection();
-                        }
-                        if (!MonsterIsOnTheGround(m))
-                        {
+                            if (MonsterCanMove(m))
+                            {
+                                m.Move();
+                            }
+                            else
+                            {
+                                m.ChangeDirection();
+                            }
+                            if (!MonsterIsOnTheGround(m))
+                            {
 
+                            }
                         }
                     }
                 }
@@ -197,9 +200,13 @@ namespace TVMario
                     {
                         foreach (Skill sk in _skills)
                         {
-                            Vector2 cur = _human.TopLeft;
-                            cur.X += 45;
-                            sk.TopLeft = cur;
+                            if (sk.skillType == 1)
+                            {
+                                Vector2 cur = _human.TopLeft;
+                                cur.X += 30;
+                                sk.TopLeft = cur;
+                                sk.show = true;
+                            }
                         }
                     }
                 }
@@ -207,7 +214,28 @@ namespace TVMario
                 {
                     foreach (Skill sk in _skills)
                     {
-                        sk.Update(gameTime, _human._isRight);
+                        if (sk.TopLeft != Vector2.Zero)
+                        {
+                            sk.Update(gameTime, _human._isRight);
+
+                            foreach (Monster m in _monsters)
+                            {
+                                if (sk.CollisionWithMonster(m))
+                                {
+                                    if (m.blood > 0)
+                                    {
+                                        if ((m.blood - sk.damage) >= 0)
+                                        {
+                                            m.blood -= sk.damage;
+                                        }
+                                        else
+                                        {
+                                            m.blood = 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
 
                 }
@@ -394,7 +422,8 @@ namespace TVMario
             {
                 foreach (Monster m in _monsters)
                 {
-                    m.Draw(spriteBatch, gameTime, Color.White);
+                    if (!m.isDie)
+                        m.Draw(spriteBatch, gameTime, Color.White);
                 }
             }
             if (_skills.Count > 0)

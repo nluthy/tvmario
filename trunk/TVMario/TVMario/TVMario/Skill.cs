@@ -38,6 +38,28 @@ namespace TVMario
             set { _length = value; }
         }
 
+        private bool _show;
+
+        public bool show
+        {
+            get { return _show; }
+            set { _show = value; }
+        }
+
+        private int _damage;
+
+        public int damage
+        {
+            get { return _damage; }
+            set { _damage = value; }
+        }
+
+        public Skill()
+        {
+            show = false;
+            length = 0;
+        }
+
         public void Init(ContentManager content, string strData)
         {
             XmlTextReader xml = new XmlTextReader(strData);
@@ -53,14 +75,20 @@ namespace TVMario
             Vector2 size = new Vector2(sizeX, sizeY);
             string strMaxLenght = skill["maxlength"].InnerText;
             int maxLength = Int32.Parse(strMaxLenght);
+            string strType = skill["type"].InnerText;
+            int type = Int32.Parse(strType);
+            string strDamage = skill["damage"].InnerText;
+            int damage = Int32.Parse(strMaxLenght);
             xml.Close();
-            this.Init(content, strPreTextures, textureCount, size, maxLength);
+            this.Init(content, strPreTextures, textureCount, size, maxLength, type, damage);
         }
 
         public void Init(ContentManager content, String strPreTextures,
-            int textureCount, Vector2 size, int maxLength)
+            int textureCount, Vector2 size, int maxLength, int type, int damage)
         {
             this.maxLength = maxLength;
+            this.skillType = type;
+            this.damage = damage;
             SpritesCount = 1;
             TopLeft = Vector2.Zero;
             Size = size;
@@ -83,16 +111,20 @@ namespace TVMario
 
         public void Update(GameTime gameTime, bool isRight)
         {
-            NextFrame();
-            if (length < maxLength)
+            if (show)
             {
-                length++;
-                Move(isRight);
-            }
-            else
-            {
-                length = 0;
-                TopLeft = Vector2.Zero;
+                NextFrame();
+                if (length < maxLength)
+                {
+                    length++;
+                    Move(isRight);
+                }
+                else
+                {
+                    length = 0;
+                    TopLeft = Vector2.Zero;
+                    show = false;
+                }
             }
             //base.Update(gameTime);
         }
@@ -117,6 +149,11 @@ namespace TVMario
                 cur.X--;
             }
             TopLeft = cur;
+        }
+
+        public bool CollisionWithMonster(Monster monster)
+        {
+            return (Sprites[0].CheckCollision(monster.Sprites[0]));                      
         }
 
 
