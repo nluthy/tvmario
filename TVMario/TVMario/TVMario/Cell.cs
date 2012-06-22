@@ -43,7 +43,7 @@ namespace TVMario
 
 
 
-        public Cell(ContentManager content, String strMap, Vector2 topleft, Vector2 size, int type)
+        public Cell(ContentManager content, String strMap, Vector2 topleft, Vector2 size, int type, int skill)
         {
             TopLeft = topleft;
             Size = size;
@@ -55,6 +55,7 @@ namespace TVMario
             Sprites.Add(temp);
             SpritesCount = 1;
             _type = type;
+            this.SkillType = skill;
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime, Color color)
@@ -71,6 +72,12 @@ namespace TVMario
             else
                 Sprites[0].Position = TopLeft;
             base.Draw(spriteBatch, gameTime, color);
+        }
+
+        public bool CollisionWwithHuman(Human hm)
+        {
+            return (Sprites[0].CheckCollision(hm.Sprites[0]) && hm.TopLeft.Y <= TopLeft.Y + Sprites[0].Height-1);
+            //
         }
 
     }

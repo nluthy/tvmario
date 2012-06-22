@@ -124,14 +124,76 @@ namespace TVMario
                 {
                     for (int j = 0; j < _map.nColumns; j++)
                     {
-                        if (_map.Cells[i, j].Type == GlobalSetting.INDEX_TEXTURE_COIN)
+                        Cell cell = _map.Cells[i, j];
+                        if (cell.Type == GlobalSetting.INDEX_TEXTURE_COIN)
                         {
-                            if (_human.CollisionWithCell(_map.Cells[i, j]))
+                            if (_human.CollisionWithCell(cell))
                             {
                                 _game.coinSound.Play();
-                                _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], _map.Cells[i, j].TopLeft, _map.Cells[i, j].Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT);
+                                _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT, 0);
                                 _human.nCoin++;
                             }
+                        }
+                        else
+                        {
+                            if (cell.Type == GlobalSetting.INDEX_TEXTURE_FLOWER)
+                            {
+                                if (_human.CollisionWithCell(cell))
+                                {
+                                    // _game.coinSound.Play();
+                                    _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT, 0);
+                                    _human.skillList.Add(3);
+                                }
+                            }
+                            else
+                            {
+                                if (cell.Type == GlobalSetting.INDEX_TEXTURE_STAR)
+                                {
+                                    if (_human.CollisionWithCell(cell))
+                                    {
+                                        // _game.coinSound.Play();
+                                        _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT, 0);
+                                        _human.skillList.Add(2);
+                                    }
+                                }
+                                else
+                                {
+                                    if (cell.Type == GlobalSetting.INDEX_TEXTURE_QUESTION)
+                                    {
+                                        if (cell.CollisionWwithHuman(_human))
+                                        {
+                                            _game.coinSound.Play();
+                                            _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_LAND], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_LAND, 0);
+                                            _human.nCoin++;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (cell.SkillType != 0)
+                                        {
+                                            if (cell.CollisionWwithHuman(_human))
+                                            {
+                                                if (cell.SkillType == 3)
+                                                {
+                                                    _map.Cells[i - 1, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_FLOWER], _map.Cells[i - 1, j].TopLeft, _map.Cells[i - 1, j].Size, GlobalSetting.INDEX_TEXTURE_FLOWER, 0);
+                                                }
+                                                else
+                                                {
+                                                    if (cell.SkillType == 2)
+                                                    {
+                                                        _map.Cells[i - 1, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_STAR], _map.Cells[i - 1, j].TopLeft, _map.Cells[i - 1, j].Size, GlobalSetting.INDEX_TEXTURE_STAR, 0);
+                                                    }
+                                                }
+                                                _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_LAND], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_LAND, 0);
+                                                _map.Cells[i, j].SkillType = 0;
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+
                         }
                     }
                 }
@@ -194,30 +256,44 @@ namespace TVMario
                     _human.Sprites[0].CurrentTexture = 0;
                 }
 
-                if (kbs.IsKeyDown(Keys.A))
+                if (kbs.IsKeyDown(Keys.A) && _human.HasSkill(1))
                 {
-                  
-                        foreach (Skill sk in _skills)
+
+                    foreach (Skill sk in _skills)
+                    {
+                        if (sk.skillType == 1)
                         {
-                            if (sk.skillType == 1)
+                            Vector2 cur = _human.TopLeft;
+                            if (_human._isRight)
                             {
-                                Vector2 cur = _human.TopLeft;
                                 cur.X += 30;
-                                sk.TopLeft = cur;
-                                sk.show = true;
                             }
+                            else
+                            {
+                                cur.X -= 30;
+                            }
+                            sk.TopLeft = cur;
+                            sk.show = true;
                         }
-                                    }
+                    }
+                }
                 else
                 {
-                    if (kbs.IsKeyDown(Keys.W))
+                    if (kbs.IsKeyDown(Keys.W) && _human.HasSkill(2))
                     {
                         foreach (Skill sk in _skills)
                         {
                             if (sk.skillType == 2)
                             {
                                 Vector2 cur = _human.TopLeft;
-                                cur.X += 30;
+                                if (_human._isRight)
+                                {
+                                    cur.X += 30;
+                                }
+                                else
+                                {
+                                    cur.X -= 30;
+                                }
                                 sk.TopLeft = cur;
                                 sk.show = true;
                             }
@@ -225,14 +301,21 @@ namespace TVMario
                     }
                     else
                     {
-                        if (kbs.IsKeyDown(Keys.D))
+                        if (kbs.IsKeyDown(Keys.D) && _human.HasSkill(3))
                         {
                             foreach (Skill sk in _skills)
                             {
                                 if (sk.skillType == 3)
                                 {
                                     Vector2 cur = _human.TopLeft;
-                                    cur.X += 30;
+                                    if (_human._isRight)
+                                    {
+                                        cur.X += 30;
+                                    }
+                                    else
+                                    {
+                                        cur.X -= 30;
+                                    }
                                     sk.TopLeft = cur;
                                     sk.show = true;
                                 }
@@ -402,7 +485,7 @@ namespace TVMario
         {
             if (hm.TopLeft.Y <= 631)
             {
-                int y = (int)hm.TopLeft.Y - 1;
+                int y = (int)hm.TopLeft.Y;
                 int x1 = (int)hm.TopLeft.X + 25;
                 int x2 = (int)hm.TopLeft.X + 30;
                 x1 -= (int)_map.TopLeft.X;
@@ -462,7 +545,12 @@ namespace TVMario
                 foreach (Skill sk in _skills)
                 {
                     if (sk.TopLeft != Vector2.Zero)
-                        sk.Draw(spriteBatch, gameTime, Color.White);
+                    {
+                        if (_human._isRight)
+                            sk.Draw(spriteBatch, gameTime, Color.White);
+                        else
+                            sk.DrawFlipHorizontal(spriteBatch, gameTime, Color.White);
+                    }
                 }
             }
         }

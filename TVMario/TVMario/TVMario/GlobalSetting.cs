@@ -18,6 +18,10 @@ namespace TVMario
         public static int INDEX_TEXTURE_COIN = 8;   // Chỉ số khung hình đồng xu chuẩn
         public static int INDEX_TEXTURE_TRANSPARENT = 0;    // Chỉ số khung hình trong suốt
         public static int MONSTER_STEP = 1;   // Độ dài 1 bước đi của monster
+        public static int INDEX_TEXTURE_FLOWER = 12;
+        public static int INDEX_TEXTURE_STAR = 13;
+        public static int INDEX_TEXTURE_LAND = 1;
+        public static int INDEX_TEXTURE_QUESTION = 11;
         
     }
 }

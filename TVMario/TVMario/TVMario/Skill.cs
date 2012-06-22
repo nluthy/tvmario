@@ -156,6 +156,11 @@ namespace TVMario
             return (Sprites[0].CheckCollision(monster.Sprites[0]));                      
         }
 
+        public void DrawFlipHorizontal(SpriteBatch spriteBatch, GameTime gameTime, Color color)
+        {
+            Sprites[0].DrawFlipHorizontal(spriteBatch, gameTime, color);
+        }
+
 
     }
 }
