@@ -24,8 +24,14 @@ namespace TVMario
         public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         MyForm _form;
-        GameState _gameState;
-        GameState _prevState;
+        private GameState _gameState;
+
+        public GameState gameState
+        {
+            get { return _gameState; }
+            set { _gameState = value; }
+        }
+        private GameState _prevState;
 
         Song _menuSong;
         Song _backgroundSong;
@@ -79,6 +85,13 @@ namespace TVMario
             get { return _growSound; }
             set { _growSound = value; }
         }
+        private SoundEffect _getSkillSound;
+
+        public SoundEffect getSkillSound
+        {
+            get { return _getSkillSound; }
+            set { _getSkillSound = value; }
+        }
 
 
         Stage _stage;
@@ -125,7 +138,7 @@ namespace TVMario
             // TODO: use this.Content to load your game content here
             _form = new MyForm("Forms/MainMenu.dat", Content);
             _stage = new Stage();
-            _stage.Init(Content, "Data/Stages/Stage01.dat", this);
+
 
             _menuSong = Content.Load<Song>(@"Audios/menu");
             _backgroundSong = Content.Load<Song>(@"Audios/background");
@@ -137,6 +150,8 @@ namespace TVMario
             _fireBallSound = Content.Load<SoundEffect>(@"Audios/fireball");
             _boltSound = Content.Load<SoundEffect>(@"Audios/bolt");
             _growSound = Content.Load<SoundEffect>(@"Audios/grow");
+            _getSkillSound = Content.Load<SoundEffect>(@"Audios/getskill");
+            _stage.Init(Content, "Data/Stages/Stage01.dat", this);
         }
 
         /// <summary>
@@ -151,7 +166,7 @@ namespace TVMario
 
         bool loadMenuDone = false;    // Cho biết đã load menu xong chưa
         int _selectedButton = 0;      // Cho biết Button nào đang được chọn
-        bool songPlayed = false;
+        public bool songPlayed = false;
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -292,7 +307,13 @@ namespace TVMario
                         MediaPlayer.IsRepeating = true;
                         songPlayed = true;
                     }
-                    _stage.Update(gameTime);
+                    if (!_stage.isPlaying)
+                    {
+                        _stage.Init(Content, "Data/Stages/Stage01.dat", this);
+                    }
+                    else
+                        _stage.Update(gameTime);
+
                     break;
                 case GameState.Exit:
                     this.Exit();

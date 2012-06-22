@@ -25,6 +25,7 @@ namespace TVMario
         private Game1 _game;
         bool _gameOver = false;
         private string strData;
+        public bool isPlaying = false;
 
 
 
@@ -40,6 +41,7 @@ namespace TVMario
             strBackground = stage["background"].InnerText;
             strHuman = stage["human"].InnerText;
             strMap = stage["map"].InnerText;
+            _monsters.Clear();
             XmlNodeList monsterNodeList = stage["monsters"].ChildNodes;
             foreach (XmlNode node in monsterNodeList)
             {
@@ -63,13 +65,14 @@ namespace TVMario
             }
             xml.Close();
             Init(content, strBackground, strHuman, strMap);
+            isPlaying = true;
         }
 
         public Stage()
         {
             _monsters = new List<Monster>();
             _skills = new List<Skill>();
-
+           
         }
 
         public void Init(ContentManager content, string strBackground, string strHuman, string strMap)
@@ -92,11 +95,18 @@ namespace TVMario
         {
             if (_human._isDie)
             {
-                // _game._dieSound.Play();// Nó play hoài, sửa lại
+                _game.dieSound.Play();// Nó play hoài, sửa lại
                 _gameOver = _human.Die();
                 if (!_gameOver)
                 {
                     Restart();
+                }
+                else
+                {
+                    MediaPlayer.Stop();
+                    _game.songPlayed = false;
+                    _game.gameState = Game1.GameState.MainMenu;
+                    this.isPlaying = false;
                 }
             }
             else
@@ -115,7 +125,6 @@ namespace TVMario
                         m.Update(gameTime);
                         if (!m.isDie)
                         {
-                            //m.MoveTopLeft(_topLeftMapNew.X - _topLeftMapOld.X);
                             if (MonsterCanMove(m))
                             {
                                 m.Move();
@@ -126,7 +135,7 @@ namespace TVMario
                             }
                             if (!MonsterIsOnTheGround(m))
                             {
-
+                                MonsterFall(m);
                             }
                         }
                     }
@@ -152,7 +161,7 @@ namespace TVMario
                             {
                                 if (_human.CollisionWithCell(cell))
                                 {
-                                    // _game.coinSound.Play();
+                                    _game.getSkillSound.Play();
                                     _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT, 0);
                                     _human.skillList.Add(3);
                                 }
@@ -163,7 +172,7 @@ namespace TVMario
                                 {
                                     if (_human.CollisionWithCell(cell))
                                     {
-                                        // _game.coinSound.Play();
+                                        _game.getSkillSound.Play();
                                         _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT, 0);
                                         _human.skillList.Add(2);
                                     }
@@ -654,7 +663,7 @@ namespace TVMario
             return false;
         }
 
-        public void MonsterFall(ref Monster mt)
+        public void MonsterFall(Monster mt)
         {
             Monster mon = mt;
             for (int i = 0; i < GlobalSetting.GRAVITY; i++)
@@ -672,20 +681,28 @@ namespace TVMario
         public void Restart()
         {
             ReInit(_game.Content, strData);
-            _human.TopLeft = _human.topLeftBegin;
+            foreach (Cell c in _map.Cells)
+            {
+                Vector2 cur = c.TopLeft;
+                cur.X -= _map.TopLeft.X;
+                c.TopLeft = cur;
+            }
             _map.TopLeft = Vector2.Zero;
         }
 
         public void ReInit(ContentManager content, string strData)
         {
+            string strHuman;
             XmlTextReader xml = new XmlTextReader(strData);
             XmlDocument doc = new XmlDocument();
             doc.Load(xml);
             XmlNode stage = doc.GetElementsByTagName("stage")[0];
+            strHuman = stage["human"].InnerText;
             _monsters.Clear();
             XmlNodeList monsterNodeList = stage["monsters"].ChildNodes;
             foreach (XmlNode node in monsterNodeList)
             {
+
                 string strTopLeftX = node["topleft"]["x"].InnerText;
                 string strTopLeftY = node["topleft"]["y"].InnerText;
                 float topLeftX = float.Parse(strTopLeftX);
@@ -695,6 +712,7 @@ namespace TVMario
                 Monster monster = new Monster();
                 monster.Init(content, topLeft, strMonsterData);
                 this._monsters.Add(monster);
+                _human.Init(content, strHuman);
             }
             xml.Close();
         }
