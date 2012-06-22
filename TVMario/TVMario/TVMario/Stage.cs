@@ -21,6 +21,7 @@ namespace TVMario
         private MapWithCells _map;
         private Human _human;
         private List<Monster> _monsters;
+        private List<Skill> _skills;
         private Game1 _game;
         bool _gameOver = false;
 
@@ -30,6 +31,7 @@ namespace TVMario
         public Stage(ContentManager content, string strData, Game1 main)
         {
             _monsters = new List<Monster>();
+            _skills = new List<Skill>();
             _game = main;
             string strBackground, strHuman, strMap;
             XmlTextReader xml = new XmlTextReader(strData);
@@ -51,6 +53,14 @@ namespace TVMario
                 Monster monster = new Monster();
                 monster.Init(content, topLeft, strMonsterData);
                 this._monsters.Add(monster);
+            }
+            XmlNodeList skillNodeList = stage["skills"].ChildNodes;
+            foreach (XmlNode node in skillNodeList)
+            {
+                string strSkill = node["data"].InnerText;
+                Skill skill = new Skill();
+                skill.Init(content, strSkill);
+                this._skills.Add(skill);
             }
             xml.Close();
             Init(content, strBackground, strHuman, strMap);
@@ -180,6 +190,28 @@ namespace TVMario
                 {
                     _human.Sprites[0].CurrentTexture = 0;
                 }
+
+                if (kbs.IsKeyDown(Keys.A))
+                {
+                    if (_skills.Count > 0)
+                    {
+                        foreach (Skill sk in _skills)
+                        {
+                            Vector2 cur = _human.TopLeft;
+                            cur.X += 45;
+                            sk.TopLeft = cur;
+                        }
+                    }
+                }
+                if (_skills.Count > 0)
+                {
+                    foreach (Skill sk in _skills)
+                    {
+                        sk.Update(gameTime, _human._isRight);
+                    }
+
+                }
+
             }
 
         }
@@ -363,6 +395,14 @@ namespace TVMario
                 foreach (Monster m in _monsters)
                 {
                     m.Draw(spriteBatch, gameTime, Color.White);
+                }
+            }
+            if (_skills.Count > 0)
+            {
+                foreach (Skill sk in _skills)
+                {
+                    if (sk.TopLeft != Vector2.Zero)
+                        sk.Draw(spriteBatch, gameTime, Color.White);
                 }
             }
         }

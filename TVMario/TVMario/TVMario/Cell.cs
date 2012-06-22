@@ -15,14 +15,14 @@ namespace TVMario
 
     public class Cell : VisibleGameEntity
     {
-        public enum SkillType {AirBlade, FireBall, Voltage };
 
-        private SkillType _skill;
 
-        public SkillType Skill
+        private int _skillType;
+
+        public int SkillType
         {
-            get { return _skill; }
-            set { _skill = value; }
+            get { return _skillType; }
+            set { _skillType = value; }
         }
 
         float _scale = 1.0f;
