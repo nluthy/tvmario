@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
   </size>
-  <blood>2</blood>
+  <blood>80</blood>
   <skill>
     <pretextures>Images/Effects/BossWeapon_</pretextures>
     <texturecount>9</texturecount>

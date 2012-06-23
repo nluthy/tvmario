@@ -61,12 +61,20 @@ namespace TVMario
             get { return _skillRight; }
             set { _skillRight = value; }
         }
+        private bool _effected;
+
+        public bool effected
+        {
+            get { return _effected; }
+            set { _effected = value; }
+        }
 
         public Skill()
         {
             show = false;
             length = 0;
             skillRight = false;
+            effected = true;
         }
 
         public void Init(ContentManager content, string strData)
@@ -162,7 +170,7 @@ namespace TVMario
 
         public bool CollisionWithMonster(Monster monster)
         {
-            return (Sprites[0].CheckCollision(monster.Sprites[0]));                      
+            return (Sprites[0].CheckCollision(monster.Sprites[0]) && effected == false);                      
         }
 
         public void DrawFlipHorizontal(SpriteBatch spriteBatch, GameTime gameTime, Color color)
