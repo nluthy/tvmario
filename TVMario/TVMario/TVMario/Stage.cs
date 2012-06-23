@@ -322,7 +322,7 @@ namespace TVMario
                                     }
                                     sk.TopLeft = cur;
                                     sk.show = true;
-                                    sk.effected = false;
+                                   // sk.effected = false;
                                 }
                             }
                         }
@@ -346,7 +346,7 @@ namespace TVMario
                                         }
                                         sk.TopLeft = cur;
                                         sk.show = true;
-                                        sk.effected = false;
+                                       // sk.effected = false;
                                     }
                                 }
                             }
@@ -370,7 +370,7 @@ namespace TVMario
                                             }
                                             sk.TopLeft = cur;
                                             sk.show = true;
-                                            sk.effected = false;
+                                           // sk.effected = false;
                                         }
                                     }
                                 }
@@ -397,7 +397,7 @@ namespace TVMario
                                                 _boss.blood = 0;
                                             }
                                         }
-                                        sk.effected = true;
+                                        //sk.effected = true;
                                     }
                                     foreach (Monster m in _monsters)
                                     {
@@ -415,7 +415,7 @@ namespace TVMario
                                                 }
                                             }
                                         }
-                                        sk.effected = true;
+                                        //sk.effected = true;
                                     }
                                 }
                             }

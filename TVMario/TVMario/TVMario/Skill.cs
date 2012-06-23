@@ -170,7 +170,7 @@ namespace TVMario
 
         public bool CollisionWithMonster(Monster monster)
         {
-            return (Sprites[0].CheckCollision(monster.Sprites[0]) && effected == false);                      
+            return (Sprites[0].CheckCollision(monster.Sprites[0]));                      
         }
 
         public void DrawFlipHorizontal(SpriteBatch spriteBatch, GameTime gameTime, Color color)
