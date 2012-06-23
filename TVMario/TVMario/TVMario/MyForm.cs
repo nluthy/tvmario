@@ -31,6 +31,23 @@ namespace TVMario
             set { _background = value; }
         }
 
+        int iName;
+
+        public int IName
+        {
+            get { return iName; }
+            set { iName = value; }
+        }
+
+        //Texture2D _subBackground;
+
+        //public Texture2D SubBackground
+        //{
+        //    get { return _subBackground; }
+        //    set { _subBackground = value; }
+        //}
+
+
         public MyForm(String strXML, ContentManager content)
         {
             Buttons = new List<MyButton>();
@@ -41,6 +58,8 @@ namespace TVMario
             XmlNode form = doc.GetElementsByTagName("myform")[0];
             XmlNode bg = form.FirstChild;
             String strBackground = bg.InnerText;
+            String strName = form["name"].InnerText;
+            IName = Int32.Parse(strName);
             XmlNodeList buttonslist = doc.GetElementsByTagName("mybutton");
             foreach (XmlNode node in buttonslist)
             {
@@ -67,6 +86,10 @@ namespace TVMario
             }
             xml.Close();
             Background = content.Load<Texture2D>(strBackground);
+            //if (strSubBackground != null && strSubBackground != "")
+            //{
+            //    SubBackground = content.Load<Texture2D>(strSubBackground);
+            //}
 
         }
 

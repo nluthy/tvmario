@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<myform>
+  <texture>Images/Backgrounds/UserManual</texture>
+  <name>10</name>
+  <mybuttons>
+    <mybutton>
+      <text>Back</text>
+      <font>Fonts/Font01</font>
+      <topleft>
+        <x>700</x>
+        <y>600</y>
+      </topleft>
+      <size>
+        <x>0</x>
+        <y>0</y>
+      </size>
+      <texturescount>1</texturescount>
+      <textures>
+        <texture>Images/Buttons/ButtonMenu</texture>
+      </textures>
+    </mybutton>
+  </mybuttons>
+</myform>
