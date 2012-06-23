@@ -272,29 +272,50 @@ namespace TVMario
                                     }
                             }
 
-                            // Bat su kien enter button
-                            if (_kbState.IsKeyDown(Keys.Enter))
-                            {
-                                if (_selectedButton == 4) // Exit game
-                                    this.Exit();
-                                else if (_selectedButton == 2) // Setting menu
-                                {
-                                    //this.Exit();
-                                }
-                                else if (_selectedButton == 0) // New Game
-                                {
-                                    _gameState = GameState.NewGame;
-                                    songPlayed = false;
-                                    MediaPlayer.Stop();
-                                }
-                            }
-
                             _form.Buttons[_selectedButton].Color = Color.Tomato;
                             for (int i = 0; i < _form.Buttons.Count; i++)
                             {
                                 if (i != _selectedButton)
                                     _form.Buttons[i].Color = Color.Wheat;
                             }
+
+                            // Bat su kien enter button
+                            if (_kbState.IsKeyDown(Keys.Enter))
+                            {
+                                if (_form.IName == 11)
+                                {
+                                    if (_selectedButton == 4) // Exit game
+                                        this.Exit();
+                                    else if (_selectedButton == 2) // Setting menu
+                                    {
+                                        //this.Exit();
+                                    }
+                                    else if (_selectedButton == 0) // New Game
+                                    {
+                                        _gameState = GameState.NewGame;
+                                        songPlayed = false;
+                                        MediaPlayer.Stop();
+                                    }
+                                    else if (_selectedButton == 3) // User Manual
+                                    {
+                                        _form = new MyForm("Forms/UserManual.dat", Content);
+                                    }
+                                }
+                                else
+                                {
+                                    if (_form.IName == 10)
+                                    {
+                                        if (_selectedButton == 0)
+                                        {
+                                            _form = new MyForm("Forms/MainMenu.dat", Content);
+                                            loadMenuDone = false;
+                                        }
+                                    }
+                                }
+                                _selectedButton = 0;
+                            }
+
+                            
                         }
                     }
                     _form.Update(gameTime);

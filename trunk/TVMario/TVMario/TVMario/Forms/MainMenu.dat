@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <myform>
   <texture>Images/Backgrounds/MainMenu</texture>
+  <name>11</name>
   <mybuttons>
     <mybutton>
       <text>New Game</text>
@@ -51,7 +52,7 @@
       </textures>
     </mybutton>
     <mybutton>
-      <text>About</text>
+      <text>User Manual</text>
       <font>Fonts/Font01</font>
       <topleft>
         <x>1000</x>
