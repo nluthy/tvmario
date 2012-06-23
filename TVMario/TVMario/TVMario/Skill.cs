@@ -178,6 +178,11 @@ namespace TVMario
             Sprites[0].DrawFlipHorizontal(spriteBatch, gameTime, color);
         }
 
+        public bool CollisionWithHuman(Human hm)
+        {
+            return (Sprites[0].CheckCollision(hm.Sprites[0]));
+        }
+
 
     }
 }
