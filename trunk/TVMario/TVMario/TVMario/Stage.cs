@@ -124,213 +124,192 @@ namespace TVMario
 
                 if (!_boss.isDie)
                 {
-                    if (_human.CollisionWithMonster(_boss))
+                    if (_human.CollisionWithMonster(_boss) || _boss.skill.CollisionWithHuman(_human))
                         _human._isDie = true;
-                    _boss.Update(gameTime);
-                    if (MonsterCanMove(_boss))
-                        _boss.Move(_map);
                     else
-                        _boss.ChangeDirection();
-
-
-                    KeyboardState kbs = Keyboard.GetState();
-                    _human.Update(gameTime);
-                    _map.Update(gameTime);
-
-                    if (_monsters.Count > 0)
                     {
-                        foreach (Monster m in _monsters)
+                        _boss.Update(gameTime);
+                        if (MonsterCanMove(_boss))
+                            _boss.Move(_map);
+                        else
+                            _boss.ChangeDirection();
+
+
+                        KeyboardState kbs = Keyboard.GetState();
+                        _human.Update(gameTime);
+                        _map.Update(gameTime);
+
+                        if (_monsters.Count > 0)
                         {
-                            if (_human.CollisionWithMonster(m) && !m.isDie)
+                            foreach (Monster m in _monsters)
                             {
-                                _human._isDie = true;
-                            }
-                            m.Update(gameTime);
-                            if (!m.isDie)
-                            {
-                                if (MonsterCanMove(m))
+                                if (!m.isDie)
                                 {
-                                    m.Move(_map);
-                                }
-                                else
-                                {
-                                    m.ChangeDirection();
-                                }
-                                if (!MonsterIsOnTheGround(m))
-                                {
-                                    MonsterFall(m);
+                                    m.Update(gameTime);
+                                    if (_human.CollisionWithMonster(m))
+                                    {
+                                        _human._isDie = true;
+                                    }
+
+                                    if (MonsterCanMove(m))
+                                    {
+                                        m.Move(_map);
+                                    }
+                                    else
+                                    {
+                                        m.ChangeDirection();
+                                    }
+                                    if (!MonsterIsOnTheGround(m))
+                                    {
+                                        MonsterFall(m);
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    for (int i = 0; i < _map.nRows; i++)
-                    {
-                        for (int j = 0; j < _map.nColumns; j++)
+                        for (int i = 0; i < _map.nRows; i++)
                         {
-                            Cell cell = _map.Cells[i, j];
-                            if (cell.Type == GlobalSetting.INDEX_TEXTURE_COIN)
+                            for (int j = 0; j < _map.nColumns; j++)
                             {
-                                if (_human.CollisionWithCell(cell))
-                                {
-                                    _game.coinSound.Play();
-                                    _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT, 0);
-                                    _human.nCoin++;
-                                }
-                            }
-                            else
-                            {
-                                if (cell.Type == GlobalSetting.INDEX_TEXTURE_FLOWER)
+                                Cell cell = _map.Cells[i, j];
+                                if (cell.Type == GlobalSetting.INDEX_TEXTURE_COIN)
                                 {
                                     if (_human.CollisionWithCell(cell))
                                     {
-                                        _game.getSkillSound.Play();
+                                        _game.coinSound.Play();
                                         _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT, 0);
-                                        _human.skillList.Add(3);
+                                        _human.nCoin++;
                                     }
                                 }
                                 else
                                 {
-                                    if (cell.Type == GlobalSetting.INDEX_TEXTURE_STAR)
+                                    if (cell.Type == GlobalSetting.INDEX_TEXTURE_FLOWER)
                                     {
                                         if (_human.CollisionWithCell(cell))
                                         {
                                             _game.getSkillSound.Play();
                                             _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT, 0);
-                                            _human.skillList.Add(2);
+                                            _human.skillList.Add(3);
                                         }
                                     }
                                     else
                                     {
-                                        if (cell.Type == GlobalSetting.INDEX_TEXTURE_QUESTION)
+                                        if (cell.Type == GlobalSetting.INDEX_TEXTURE_STAR)
                                         {
-                                            if (cell.CollisionWwithHuman(_human))
+                                            if (_human.CollisionWithCell(cell))
                                             {
-                                                _game.coinSound.Play();
-                                                _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_LAND], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_LAND, 0);
-                                                _human.nCoin++;
+                                                _game.getSkillSound.Play();
+                                                _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_TRANSPARENT], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_TRANSPARENT, 0);
+                                                _human.skillList.Add(2);
                                             }
                                         }
                                         else
                                         {
-                                            if (cell.SkillType != 0)
+                                            if (cell.Type == GlobalSetting.INDEX_TEXTURE_QUESTION)
                                             {
                                                 if (cell.CollisionWwithHuman(_human))
                                                 {
-                                                    _game.growSound.Play();
-                                                    if (cell.SkillType == 3)
-                                                    {
-                                                        _map.Cells[i - 1, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_FLOWER], _map.Cells[i - 1, j].TopLeft, _map.Cells[i - 1, j].Size, GlobalSetting.INDEX_TEXTURE_FLOWER, 0);
-                                                    }
-                                                    else
-                                                    {
-                                                        if (cell.SkillType == 2)
-                                                        {
-                                                            _map.Cells[i - 1, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_STAR], _map.Cells[i - 1, j].TopLeft, _map.Cells[i - 1, j].Size, GlobalSetting.INDEX_TEXTURE_STAR, 0);
-                                                        }
-                                                    }
+                                                    _game.coinSound.Play();
                                                     _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_LAND], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_LAND, 0);
-                                                    _map.Cells[i, j].SkillType = 0;
+                                                    _human.nCoin++;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (cell.SkillType != 0)
+                                                {
+                                                    if (cell.CollisionWwithHuman(_human))
+                                                    {
+                                                        _game.growSound.Play();
+                                                        if (cell.SkillType == 3)
+                                                        {
+                                                            _map.Cells[i - 1, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_FLOWER], _map.Cells[i - 1, j].TopLeft, _map.Cells[i - 1, j].Size, GlobalSetting.INDEX_TEXTURE_FLOWER, 0);
+                                                        }
+                                                        else
+                                                        {
+                                                            if (cell.SkillType == 2)
+                                                            {
+                                                                _map.Cells[i - 1, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_STAR], _map.Cells[i - 1, j].TopLeft, _map.Cells[i - 1, j].Size, GlobalSetting.INDEX_TEXTURE_STAR, 0);
+                                                            }
+                                                        }
+                                                        _map.Cells[i, j] = new Cell(_game.Content, _map.strCells[GlobalSetting.INDEX_TEXTURE_LAND], cell.TopLeft, cell.Size, GlobalSetting.INDEX_TEXTURE_LAND, 0);
+                                                        _map.Cells[i, j].SkillType = 0;
 
+                                                    }
                                                 }
                                             }
                                         }
+
                                     }
 
                                 }
-
                             }
                         }
-                    }
 
 
-                    if (kbs.IsKeyDown(Keys.Right))
-                    {
-                        if (_human._isRight)
-                            HumanRun();
-                        else
-                            _human._isRight = true;
-                    }
-                    if (kbs.IsKeyDown(Keys.Left))
-                    {
-                        if (!_human._isRight)
-                            HumanBack();
-                        else
-                            _human._isRight = false;
-                    }
-                    if (kbs.IsKeyDown(Keys.Space))
-                    {
-                        if (HumanIsOnTheGround(_human))
+                        if (kbs.IsKeyDown(Keys.Right))
                         {
-                            _human._isJumping = true;
-                            HumanJump();
-                        }
-                    }
-                    if (_human._isJumping)
-                    {
-                        if (_human.JumpHightNow < _human.jumpHight)
-                        {
-                            int hight = _human.jumpHight - _human.JumpHightNow;
-                            if ((hight) >= GlobalSetting.JUMP_STEP)
-                            {
-                                _human.Jump(GlobalSetting.JUMP_STEP);
-                                _human.JumpHightNow += GlobalSetting.JUMP_STEP;
-                            }
+                            if (_human._isRight)
+                                HumanRun();
                             else
+                                _human._isRight = true;
+                        }
+                        if (kbs.IsKeyDown(Keys.Left))
+                        {
+                            if (!_human._isRight)
+                                HumanBack();
+                            else
+                                _human._isRight = false;
+                        }
+                        if (kbs.IsKeyDown(Keys.Space))
+                        {
+                            if (HumanIsOnTheGround(_human))
                             {
-                                _human.Jump(hight);
-                                _human.JumpHightNow += hight;
+                                _human._isJumping = true;
+                                HumanJump();
                             }
                         }
-                        else
+                        if (_human._isJumping)
                         {
-                            _human._isJumping = false;
-                            _human.jumpHight = 0;
-                            _human.JumpHightNow = 0;
-                        }
-                    }
-                    else
-                    {
-                        if (!HumanIsOnTheGround(_human))
-                        {
-                            HumanFall();
-                        }
-                    }
-                    if (kbs.IsKeyUp(Keys.Left) && kbs.IsKeyUp(Keys.Right) && HumanIsOnTheGround(_human))
-                    {
-                        _human.Sprites[0].CurrentTexture = 0;
-                    }
-
-                    if (kbs.IsKeyDown(Keys.A) && _human.HasSkill(1))
-                    {
-                        _game.cutSound.Play();
-                        foreach (Skill sk in _skills)
-                        {
-                            if (sk.skillType == 1)
+                            if (_human.JumpHightNow < _human.jumpHight)
                             {
-                                Vector2 cur = _human.TopLeft;
-                                if (_human._isRight)
+                                int hight = _human.jumpHight - _human.JumpHightNow;
+                                if ((hight) >= GlobalSetting.JUMP_STEP)
                                 {
-                                    cur.X += 30;
+                                    _human.Jump(GlobalSetting.JUMP_STEP);
+                                    _human.JumpHightNow += GlobalSetting.JUMP_STEP;
                                 }
                                 else
                                 {
-                                    cur.X -= 30;
+                                    _human.Jump(hight);
+                                    _human.JumpHightNow += hight;
                                 }
-                                sk.TopLeft = cur;
-                                sk.show = true;
-                                sk.effected = false;
+                            }
+                            else
+                            {
+                                _human._isJumping = false;
+                                _human.jumpHight = 0;
+                                _human.JumpHightNow = 0;
                             }
                         }
-                    }
-                    else
-                    {
-                        if (kbs.IsKeyDown(Keys.W) && _human.HasSkill(2))
+                        else
                         {
-                            _game.fireBallSound.Play();
+                            if (!HumanIsOnTheGround(_human))
+                            {
+                                HumanFall();
+                            }
+                        }
+                        if (kbs.IsKeyUp(Keys.Left) && kbs.IsKeyUp(Keys.Right) && HumanIsOnTheGround(_human))
+                        {
+                            _human.Sprites[0].CurrentTexture = 0;
+                        }
+
+                        if (kbs.IsKeyDown(Keys.A) && _human.HasSkill(1))
+                        {
+                            _game.cutSound.Play();
                             foreach (Skill sk in _skills)
                             {
-                                if (sk.skillType == 2)
+                                if (sk.skillType == 1)
                                 {
                                     Vector2 cur = _human.TopLeft;
                                     if (_human._isRight)
@@ -349,12 +328,12 @@ namespace TVMario
                         }
                         else
                         {
-                            if (kbs.IsKeyDown(Keys.D) && _human.HasSkill(3))
+                            if (kbs.IsKeyDown(Keys.W) && _human.HasSkill(2))
                             {
-                                _game.boltSound.Play();
+                                _game.fireBallSound.Play();
                                 foreach (Skill sk in _skills)
                                 {
-                                    if (sk.skillType == 3)
+                                    if (sk.skillType == 2)
                                     {
                                         Vector2 cur = _human.TopLeft;
                                         if (_human._isRight)
@@ -371,48 +350,73 @@ namespace TVMario
                                     }
                                 }
                             }
-                        }
-                    }
-
-                    if (_skills.Count > 0)
-                    {
-                        foreach (Skill sk in _skills)
-                        {
-                            if (sk.TopLeft != Vector2.Zero)
+                            else
                             {
-                                sk.Update(gameTime, _human._isRight, 1);
-                                if (sk.CollisionWithMonster(_boss))
+                                if (kbs.IsKeyDown(Keys.D) && _human.HasSkill(3))
                                 {
-                                    if (_boss.blood > 0)
+                                    _game.boltSound.Play();
+                                    foreach (Skill sk in _skills)
                                     {
-                                        if ((_boss.blood - sk.damage) >= 0)
+                                        if (sk.skillType == 3)
                                         {
-                                            _boss.blood -= sk.damage;
-                                        }
-                                        else
-                                        {
-                                            _boss.blood = 0;
-                                        }
-                                    }
-                                    sk.effected = true;
-                                }
-                                foreach (Monster m in _monsters)
-                                {
-                                    if (sk.CollisionWithMonster(m))
-                                    {
-                                        if (m.blood > 0)
-                                        {
-                                            if ((m.blood - sk.damage) >= 0)
+                                            Vector2 cur = _human.TopLeft;
+                                            if (_human._isRight)
                                             {
-                                                m.blood -= sk.damage;
+                                                cur.X += 30;
                                             }
                                             else
                                             {
-                                                m.blood = 0;
+                                                cur.X -= 30;
                                             }
+                                            sk.TopLeft = cur;
+                                            sk.show = true;
+                                            sk.effected = false;
                                         }
                                     }
-                                    sk.effected = true;
+                                }
+                            }
+                        }
+
+                        if (_skills.Count > 0)
+                        {
+                            foreach (Skill sk in _skills)
+                            {
+                                if (sk.TopLeft != Vector2.Zero)
+                                {
+                                    sk.Update(gameTime, _human._isRight, 1);
+                                    if (sk.CollisionWithMonster(_boss))
+                                    {
+                                        if (_boss.blood > 0)
+                                        {
+                                            if ((_boss.blood - sk.damage) >= 0)
+                                            {
+                                                _boss.blood -= sk.damage;
+                                            }
+                                            else
+                                            {
+                                                _boss.blood = 0;
+                                            }
+                                        }
+                                        sk.effected = true;
+                                    }
+                                    foreach (Monster m in _monsters)
+                                    {
+                                        if (sk.CollisionWithMonster(m))
+                                        {
+                                            if (m.blood > 0)
+                                            {
+                                                if ((m.blood - sk.damage) >= 0)
+                                                {
+                                                    m.blood -= sk.damage;
+                                                }
+                                                else
+                                                {
+                                                    m.blood = 0;
+                                                }
+                                            }
+                                        }
+                                        sk.effected = true;
+                                    }
                                 }
                             }
                         }
