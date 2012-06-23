@@ -54,10 +54,19 @@ namespace TVMario
             set { _damage = value; }
         }
 
+        private bool _skillRight;
+
+        public bool skillRight
+        {
+            get { return _skillRight; }
+            set { _skillRight = value; }
+        }
+
         public Skill()
         {
             show = false;
             length = 0;
+            skillRight = false;
         }
 
         public void Init(ContentManager content, string strData)
@@ -78,7 +87,7 @@ namespace TVMario
             string strType = skill["type"].InnerText;
             int type = Int32.Parse(strType);
             string strDamage = skill["damage"].InnerText;
-            int damage = Int32.Parse(strMaxLenght);
+            int damage = Int32.Parse(strDamage);
             xml.Close();
             this.Init(content, strPreTextures, textureCount, size, maxLength, type, damage);
         }
@@ -109,7 +118,7 @@ namespace TVMario
             SpritesCount = 1;
         }
 
-        public void Update(GameTime gameTime, bool isRight)
+        public void Update(GameTime gameTime, bool isRight, int value)
         {
             if (show)
             {
@@ -117,7 +126,7 @@ namespace TVMario
                 if (length < maxLength)
                 {
                     length++;
-                    Move(isRight);
+                    Move(value,isRight);
                 }
                 else
                 {
@@ -137,16 +146,16 @@ namespace TVMario
                 this.Sprites[0].CurrentTexture = 0;
         }
 
-        public void Move(bool isRight)
+        public void Move(int value,bool isRight)
         {
             Vector2 cur = TopLeft;
             if (isRight)
             {
-                cur.X++;
+                cur.X+=value;
             }
             else
             {
-                cur.X--;
+                cur.X-=value;
             }
             TopLeft = cur;
         }

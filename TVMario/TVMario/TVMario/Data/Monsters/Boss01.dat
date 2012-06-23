@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<monster>
+  <pretextures>Images/Characters/Monsters/Boss</pretextures>
+  <texturecount>3</texturecount>
+  <size>
+    <x>0</x>
+    <y>0</y>
+  </size>
+  <blood>2</blood>
+  <skill>
+    <pretextures>Images/Effects/BossWeapon_</pretextures>
+    <texturecount>9</texturecount>
+    <size>
+      <x>0</x>
+      <y>0</y>
+    </size>
+    <maxlength>200</maxlength>
+    <type>-1</type>
+    <damage>100</damage>
+  </skill>
+</monster>

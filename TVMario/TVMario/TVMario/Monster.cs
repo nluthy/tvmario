@@ -47,7 +47,7 @@ namespace TVMario
 
 
 
-        public void Init(ContentManager content, Vector2 topLeft, string strData)
+        virtual public void Init(ContentManager content, Vector2 topLeft, string strData)
         {
             XmlTextReader xml = new XmlTextReader(strData);
             XmlDocument doc = new XmlDocument();
@@ -66,7 +66,7 @@ namespace TVMario
             this.Init(content, strPreTextures, textureCount, topLeft, size, blood);
         }
 
-        private void Init(ContentManager content, string strPreTextures, int textureCount, Vector2 topLeft, Vector2 size, int blood)
+        public void Init(ContentManager content, string strPreTextures, int textureCount, Vector2 topLeft, Vector2 size, int blood)
         {
             this.blood = blood;
             Init(content, strPreTextures, textureCount, topLeft, size);
@@ -88,30 +88,33 @@ namespace TVMario
                 {
                     NextFrame();
                 }
-                Move();
+                //Move();
             }
 
 
             //base.Update(gameTime);
         }
 
-        public void Move()
+        virtual public void Move(MapWithCells map)
         {
-            if (isRight)
-            {
-                Vector2 cur = TopLeft;
-                cur.X += GlobalSetting.MONSTER_STEP;
-                TopLeft = cur;
-            }
-            else
-            {
-                Vector2 cur = TopLeft;
-                cur.X -= GlobalSetting.MONSTER_STEP;
-                TopLeft = cur;
-            }
+            //if ((TopLeft.X - map.TopLeft.X) > 0 && (TopLeft.X - map.TopLeft.X) <= 1023)
+            //{
+                if (isRight)
+                {
+                    Vector2 cur = TopLeft;
+                    cur.X += GlobalSetting.MONSTER_STEP;
+                    TopLeft = cur;
+                }
+                else
+                {
+                    Vector2 cur = TopLeft;
+                    cur.X -= GlobalSetting.MONSTER_STEP;
+                    TopLeft = cur;
+                }
+            //}
         }
 
-        private void NextFrame()
+        virtual public void NextFrame()
         {
             if (Sprites[0].CurrentTexture == Sprites[0].TexturesCount - 2)
             {
