@@ -26,6 +26,7 @@ namespace TVMario
         bool _gameOver = false;
         private string strData;
         public bool isPlaying = false;
+        private Boss _boss;
 
 
 
@@ -63,6 +64,14 @@ namespace TVMario
                 skill.Init(content, strSkill);
                 this._skills.Add(skill);
             }
+            _boss = new Boss();
+            string strBossX = stage["boss"]["topleft"]["x"].InnerText;
+            string strBossY = stage["boss"]["topleft"]["y"].InnerText;
+            float bossX = float.Parse(strBossX);
+            float bossY = float.Parse(strBossY);
+            Vector2 bossTopLeft = new Vector2(bossX, bossY);
+            string strBossData = stage["boss"]["data"].InnerText;
+            _boss.Init(content, bossTopLeft, strBossData);
             xml.Close();
             Init(content, strBackground, strHuman, strMap);
             isPlaying = true;
@@ -72,7 +81,7 @@ namespace TVMario
         {
             _monsters = new List<Monster>();
             _skills = new List<Skill>();
-           
+
         }
 
         public void Init(ContentManager content, string strBackground, string strHuman, string strMap)
@@ -93,6 +102,7 @@ namespace TVMario
         Vector2 _topLeftMapNew = new Vector2();
         public void Update(GameTime gameTime)
         {
+
             if (_human._isDie)
             {
                 _game.dieSound.Play();// Nó play hoài, sửa lại
@@ -114,6 +124,16 @@ namespace TVMario
                 KeyboardState kbs = Keyboard.GetState();
                 _human.Update(gameTime);
                 _map.Update(gameTime);
+                if (!_boss.isDie)
+                {
+                    if (_human.CollisionWithMonster(_boss))
+                        _human._isDie = true;
+                    _boss.Update(gameTime);
+                    if (MonsterCanMove(_boss))
+                        _boss.Move(_map);
+                    else
+                        _boss.ChangeDirection();
+                }
                 if (_monsters.Count > 0)
                 {
                     foreach (Monster m in _monsters)
@@ -127,7 +147,7 @@ namespace TVMario
                         {
                             if (MonsterCanMove(m))
                             {
-                                m.Move();
+                                m.Move(_map);
                             }
                             else
                             {
@@ -354,8 +374,21 @@ namespace TVMario
                     {
                         if (sk.TopLeft != Vector2.Zero)
                         {
-                            sk.Update(gameTime, _human._isRight);
-
+                            sk.Update(gameTime, _human._isRight, 1);
+                            if (sk.CollisionWithMonster(_boss))
+                            {
+                                if (_boss.blood > 0)
+                                {
+                                    if ((_boss.blood - sk.damage) >= 0)
+                                    {
+                                        _boss.blood -= sk.damage;
+                                    }
+                                    else
+                                    {
+                                        _boss.blood = 0;
+                                    }
+                                }
+                            }
                             foreach (Monster m in _monsters)
                             {
                                 if (sk.CollisionWithMonster(m))
@@ -486,6 +519,7 @@ namespace TVMario
                         {
                             m.MoveTopLeft(-GlobalSetting.STEP_WIDTH);
                         }
+                        _boss.MoveTopLeft(-GlobalSetting.STEP_WIDTH);
                     }
                 }
             }
@@ -515,6 +549,7 @@ namespace TVMario
                         {
                             m.MoveTopLeft(GlobalSetting.STEP_WIDTH);
                         }
+                        _boss.MoveTopLeft(GlobalSetting.STEP_WIDTH);
                     }
                 }
 
@@ -605,6 +640,10 @@ namespace TVMario
             {
                 spriteBatch.DrawString(font2, "Bolt: Press D to use", new Vector2(880, 60), Color.White);
             }
+            if (!_boss.isDie)
+            {
+                _boss.Draw(spriteBatch, gameTime, Color.White);
+            }
 
         }
 
@@ -613,10 +652,10 @@ namespace TVMario
         {
             if (mt.isRight)
             {
-                int x = (int)mt.TopLeft.X + 23;
+                int x = (int)mt.TopLeft.X + mt.Sprites[0].Width - 1;
                 x -= (int)_map.TopLeft.X;
                 int y1 = (int)mt.TopLeft.Y + 1;
-                int y2 = (int)mt.TopLeft.Y + 31;
+                int y2 = (int)mt.TopLeft.Y + mt.Sprites[0].Height - 1;
                 for (int y = y1; y <= y2; y++)
                 {
                     int row = y / _map.CELL_HEIGHT;
@@ -639,7 +678,7 @@ namespace TVMario
                 int x = (int)mt.TopLeft.X - 1;
                 x -= (int)_map.TopLeft.X;
                 int y1 = (int)mt.TopLeft.Y + 1;
-                int y2 = (int)mt.TopLeft.Y + 31;
+                int y2 = (int)mt.TopLeft.Y + mt.Sprites[0].Height - 1;
                 for (int y = y1; y <= y2; y++)
                 {
                     int row = y / _map.CELL_HEIGHT;
@@ -724,8 +763,16 @@ namespace TVMario
                 Monster monster = new Monster();
                 monster.Init(content, topLeft, strMonsterData);
                 this._monsters.Add(monster);
-                _human.Init(content, strHuman);
             }
+            _human.Init(content, strHuman);
+            _boss = new Boss();
+            string strBossX = stage["boss"]["topleft"]["x"].InnerText;
+            string strBossY = stage["boss"]["topleft"]["y"].InnerText;
+            float bossX = float.Parse(strBossX);
+            float bossY = float.Parse(strBossY);
+            Vector2 bossTopLeft = new Vector2(bossX, bossY);
+            string strBossData = stage["boss"]["data"].InnerText;
+            _boss.Init(content, bossTopLeft, strBossData);
             xml.Close();
         }
 
