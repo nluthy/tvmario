@@ -39,6 +39,13 @@
       </topleft>
       <data>Data/Monsters/Monster05.dat</data>
     </monster>
+    <monster>
+      <topleft>
+        <x>400</x>
+        <y>568</y>
+      </topleft>
+      <data>Data/Monsters/Monster04.dat</data>
+    </monster>
   </monsters>
   <boss>
     <topleft>

@@ -111,7 +111,7 @@ namespace TVMario
                     cur.X -= GlobalSetting.MONSTER_STEP;
                     TopLeft = cur;
                 }
-            //}
+           // }
         }
 
         virtual public void NextFrame()
